@@ -1,12 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class PhysicsMovement : MonoBehaviour
 {
-    public float MinGroundNormalY = .65f;
-    public float GravityModifier = 1f;
-    public Vector2 Velocity;
-    public LayerMask LayerMask;
+    private const float minMoveDistance = 0.001f;
+    private const float shellRadius = 0.01f;
+
+    [SerializeField] private float MinGroundNormalY = .65f;
+    [SerializeField] private float GravityModifier = 1f;
+    [SerializeField] private Vector2 Velocity;
+    [SerializeField] private LayerMask LayerMask;
 
     public bool Grounded { get; private set; }
 
@@ -16,9 +20,6 @@ public class PhysicsMovement : MonoBehaviour
     private ContactFilter2D _contactFilter;
     private readonly RaycastHit2D[] _hitBuffer = new RaycastHit2D[16];
     private readonly List<RaycastHit2D> _hitBufferList = new List<RaycastHit2D>(16);
-
-    private const float minMoveDistance = 0.001f;
-    private const float shellRadius = 0.01f;
 
     private void OnEnable()
     {
