@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class PrefabSpawner : MonoBehaviour
 {
     [SerializeField] private float _baseCooldown;
     [SerializeField] private GameObject _prefab;
