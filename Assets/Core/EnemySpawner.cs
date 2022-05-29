@@ -24,7 +24,7 @@ public class EnemySpawner : MonoBehaviour
     private IEnumerator PressAnimation()
     {
         if (_spawnPoints.Length == 0)
-            yield return null;
+            yield break;
 
         Instantiate(
             _prefab,
