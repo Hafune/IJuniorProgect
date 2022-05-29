@@ -16,13 +16,13 @@ public class AnimationEventDispatcher : MonoBehaviour
 
     private void Update()
     {
-        if (_physicsMovement.Velocity.x != 0)
+        if (_physicsMovement.HorizontalVelocity != 0)
         {
             _animator.SetBool(IsMoving, true);
 
-            if (_physicsMovement.Velocity.x < -changeDirectionValue)
+            if (_physicsMovement.HorizontalVelocity < -changeDirectionValue)
                 _spriteRenderer.flipX = true;
-            else if (_physicsMovement.Velocity.x > changeDirectionValue)
+            else if (_physicsMovement.HorizontalVelocity > changeDirectionValue)
                 _spriteRenderer.flipX = false;
         }
         else

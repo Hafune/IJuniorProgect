@@ -9,10 +9,11 @@ public class PhysicsMovement : MonoBehaviour
 
     [SerializeField] private float MinGroundNormalY = .65f;
     [SerializeField] private float GravityModifier = 1f;
-    [SerializeField] private Vector2 Velocity;
     [SerializeField] private LayerMask LayerMask;
+    [SerializeField] private Vector2 Velocity;
 
     public bool Grounded { get; private set; }
+    public float HorizontalVelocity => Velocity.x;
 
     private Vector2 _targetVelocity;
     private Vector2 _groundNormal;
