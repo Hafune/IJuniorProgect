@@ -18,10 +18,10 @@ public class PrefabSpawner : MonoBehaviour
         for (int i = 0; i < _spawnPointsContainer.childCount; i++)
             _spawnPoints[i] = _spawnPointsContainer.GetChild(i);
 
-        StartCoroutine(PressAnimation());
+        StartCoroutine(SpawnPrefab());
     }
 
-    private IEnumerator PressAnimation()
+    private IEnumerator SpawnPrefab()
     {
         if (_spawnPoints.Length == 0)
             yield break;
@@ -38,6 +38,6 @@ public class PrefabSpawner : MonoBehaviour
         if (_spawnPointIndex >= _spawnPoints.Length)
             _spawnPointIndex = 0;
 
-        StartCoroutine(PressAnimation());
+        StartCoroutine(SpawnPrefab());
     }
 }

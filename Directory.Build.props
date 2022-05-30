@@ -1,0 +1,8 @@
+<Project>
+ <PropertyGroup>
+    <Nullable>enable</Nullable>
+    <RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
+    <RunAnalyzersDuringLiveAnalysis>true</RunAnalyzersDuringLiveAnalysis>
+    <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)MyRules.ruleset</CodeAnalysisRuleSet>
+ </PropertyGroup>
+</Project>

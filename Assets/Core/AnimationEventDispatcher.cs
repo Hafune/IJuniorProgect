@@ -2,7 +2,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(SpriteRenderer))]
-[RequireComponent(typeof(PhysicsMovement))]
+[RequireComponent(typeof(MyPhysics2D))]
 public class AnimationEventDispatcher : MonoBehaviour
 {
     private static readonly int IsMoving = Animator.StringToHash("isMoving");
@@ -10,19 +10,19 @@ public class AnimationEventDispatcher : MonoBehaviour
 
     [SerializeField] private Animator _animator = null!;
     [SerializeField] private SpriteRenderer _spriteRenderer = null!;
-    [SerializeField] private PhysicsMovement _physicsMovement = null!;
+    [SerializeField] private MyPhysics2D _myPhysics2D = null!;
 
     private float changeDirectionValue = .01f;
 
     private void Update()
     {
-        if (_physicsMovement.HorizontalVelocity != 0)
+        if (_myPhysics2D.HorizontalVelocity != 0)
         {
             _animator.SetBool(IsMoving, true);
 
-            if (_physicsMovement.HorizontalVelocity < -changeDirectionValue)
+            if (_myPhysics2D.HorizontalVelocity < -changeDirectionValue)
                 _spriteRenderer.flipX = true;
-            else if (_physicsMovement.HorizontalVelocity > changeDirectionValue)
+            else if (_myPhysics2D.HorizontalVelocity > changeDirectionValue)
                 _spriteRenderer.flipX = false;
         }
         else
@@ -30,6 +30,6 @@ public class AnimationEventDispatcher : MonoBehaviour
             _animator.SetBool(IsMoving, false);
         }
 
-        _animator.SetBool(OnGround, _physicsMovement.Grounded);
+        _animator.SetBool(OnGround, _myPhysics2D.Grounded);
     }
 }
