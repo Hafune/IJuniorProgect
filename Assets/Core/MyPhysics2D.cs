@@ -4,18 +4,17 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class MyPhysics2D : MonoBehaviour
 {
-    private const float minMoveDistance = 0.001f;
     private const float shellRadius = 0.01f;
 
     [SerializeField] private float _minGroundNormalY = .65f;
     [SerializeField] private float _gravityModifier = 1f;
     [SerializeField] private LayerMask _layerMask;
     [SerializeField] private Vector2 _velocity;
-    [Range(0f, 20f)] private float _jumpForce = 10f;
 
     public bool Grounded { get; private set; }
     public float HorizontalVelocity => _velocity.x;
 
+    private float _jumpForce = 10f;
     private Vector2 _targetVelocity = Vector2.zero;
     private Vector2 _groundNormal;
     private Rigidbody2D _rigidbody;
@@ -31,13 +30,9 @@ public class MyPhysics2D : MonoBehaviour
             _velocity.y = _jumpForce;
     }
 
-    private void OnEnable()
-    {
-        _rigidbody = GetComponent<Rigidbody2D>();
-    }
-
     private void Start()
     {
+        _rigidbody = GetComponent<Rigidbody2D>();
         _contactFilter.useTriggers = false;
         _contactFilter.SetLayerMask(_layerMask);
         _contactFilter.useLayerMask = true;
@@ -65,40 +60,37 @@ public class MyPhysics2D : MonoBehaviour
     {
         float distance = move.magnitude;
 
-        if (distance > minMoveDistance)
+        int count = _rigidbody.Cast(move, _contactFilter, _hitBuffer, distance + shellRadius);
+
+        _hitBufferList.Clear();
+
+        for (int i = 0; i < count; i++)
         {
-            int count = _rigidbody.Cast(move, _contactFilter, _hitBuffer, distance + shellRadius);
+            _hitBufferList.Add(_hitBuffer[i]);
+        }
 
-            _hitBufferList.Clear();
-
-            for (int i = 0; i < count; i++)
+        foreach (var hit2D in _hitBufferList)
+        {
+            var currentNormal = hit2D.normal;
+            if (currentNormal.y > _minGroundNormalY)
             {
-                _hitBufferList.Add(_hitBuffer[i]);
+                Grounded = true;
+                if (yMovement)
+                {
+                    _groundNormal = currentNormal;
+                    currentNormal.x = 0;
+                }
             }
 
-            foreach (var hit2D in _hitBufferList)
+            float projection = Vector2.Dot(_velocity, currentNormal);
+
+            if (projection < 0)
             {
-                var currentNormal = hit2D.normal;
-                if (currentNormal.y > _minGroundNormalY)
-                {
-                    Grounded = true;
-                    if (yMovement)
-                    {
-                        _groundNormal = currentNormal;
-                        currentNormal.x = 0;
-                    }
-                }
-
-                float projection = Vector2.Dot(_velocity, currentNormal);
-
-                if (projection < 0)
-                {
-                    _velocity -= projection * currentNormal;
-                }
-
-                float modifiedDistance = hit2D.distance - shellRadius;
-                distance = modifiedDistance < distance ? modifiedDistance : distance;
+                _velocity -= projection * currentNormal;
             }
+
+            float modifiedDistance = hit2D.distance - shellRadius;
+            distance = modifiedDistance < distance ? modifiedDistance : distance;
         }
 
         _rigidbody.position += move.normalized * distance;
