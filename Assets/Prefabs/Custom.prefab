@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 8290310961647646257}
   - component: {fileID: 8290310961647646261}
   - component: {fileID: 8290310961647646260}
-  - component: {fileID: 8290310961647646219}
-  - component: {fileID: 3971401446843222171}
+  - component: {fileID: -6138705699852865791}
+  - component: {fileID: 5395125714024443091}
   m_Layer: 6
-  m_Name: Character
+  m_Name: Custom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -156,7 +156,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8290310961647646219
+--- !u!114 &-6138705699852865791
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,28 +165,55 @@ MonoBehaviour:
   m_GameObject: {fileID: 8290310961647646259}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e46803be985293a4ea54472e62e54559, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 8290310961647646260}
-  _spriteRenderer: {fileID: 8290310961647646256}
-  _myPhysics2D: {fileID: 3971401446843222171}
---- !u!114 &3971401446843222171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8290310961647646259}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 544bc245ddf740a291ef5c2a28ca50f0, type: 3}
+  m_Script: {fileID: 11500000, guid: 87622ad215294ecfb6cea90c1edaf81d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _minGroundNormalY: 0.65
-  _gravityModifier: 1
   _layerMask:
     serializedVersion: 2
     m_Bits: 1
   _velocity: {x: 0, y: 0}
-  friction: 0.5
+  friction: 15
+  speed: 60
+--- !u!114 &5395125714024443091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8290310961647646259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d39e756c0c045664191f5e6054f5f61f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _setForceX:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -6138705699852865791}
+        m_TargetAssemblyTypeName: MyPhysics2DCustom, Assembly-CSharp
+        m_MethodName: SetForceX
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _tryJump:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -6138705699852865791}
+        m_TargetAssemblyTypeName: MyPhysics2DCustom, Assembly-CSharp
+        m_MethodName: TryJimp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

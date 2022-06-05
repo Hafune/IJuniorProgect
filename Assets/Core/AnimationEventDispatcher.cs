@@ -1,8 +1,10 @@
+using System;
+using Core;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(SpriteRenderer))]
-[RequireComponent(typeof(MyPhysics2D))]
+[RequireComponent(typeof(IAnimationEvent))]
 public class AnimationEventDispatcher : MonoBehaviour
 {
     private static readonly int IsMoving = Animator.StringToHash("isMoving");
@@ -10,13 +12,18 @@ public class AnimationEventDispatcher : MonoBehaviour
 
     [SerializeField] private Animator _animator = null!;
     [SerializeField] private SpriteRenderer _spriteRenderer = null!;
-    [SerializeField] private MyPhysics2D _myPhysics2D = null!;
+    [SerializeField] private IAnimationEvent _myPhysics2D = null!;
 
     private float changeDirectionValue = .01f;
 
-    private void Update()
+    private void Start()
     {
-        if (_myPhysics2D.HorizontalVelocity != 0)
+        _myPhysics2D = GetComponent<IAnimationEvent>();
+    }
+
+    private void FixedUpdate()
+    {
+        if (Math.Abs(_myPhysics2D.HorizontalVelocity) > .02f)
         {
             _animator.SetBool(IsMoving, true);
 
@@ -30,6 +37,6 @@ public class AnimationEventDispatcher : MonoBehaviour
             _animator.SetBool(IsMoving, false);
         }
 
-        _animator.SetBool(OnGround, _myPhysics2D.Grounded);
+        _animator.SetBool(OnGround, _myPhysics2D.OnGround);
     }
 }
