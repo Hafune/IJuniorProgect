@@ -2,8 +2,6 @@ using System;
 using Core;
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(IAnimationEvent))]
 public class AnimationEventDispatcher : MonoBehaviour
 {
@@ -12,7 +10,7 @@ public class AnimationEventDispatcher : MonoBehaviour
 
     [SerializeField] private Animator _animator = null!;
     [SerializeField] private SpriteRenderer _spriteRenderer = null!;
-    [SerializeField] private IAnimationEvent _myPhysics2D = null!;
+    private IAnimationEvent _myPhysics2D = null!;
 
     private float changeDirectionValue = .01f;
 
