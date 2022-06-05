@@ -17,7 +17,7 @@ public class SonicController2D : MonoBehaviour, IAnimationEvent
     private Vector2 _groundNormal = Vector2.up;
     private Vector2 _slopeNormal = Vector2.up;
     private Rigidbody2D _rigidbody = null!;
-    private CircleCollider2D _circleCollider = null!;
+    private Collider2D _bodyCollider = null!;
     private BoxCollider2D _leftEdge = null!;
     private BoxCollider2D _rightEdge = null!;
     private ContactFilter2D _contactFilter;
@@ -36,7 +36,7 @@ public class SonicController2D : MonoBehaviour, IAnimationEvent
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        _circleCollider = GetComponent<CircleCollider2D>();
+        _bodyCollider = GetComponent<Collider2D>();
         _contactFilter.SetLayerMask(_layerMask);
         _contactFilter.useTriggers = false;
         _contactFilter.useLayerMask = true;
@@ -46,12 +46,14 @@ public class SonicController2D : MonoBehaviour, IAnimationEvent
 
         _leftEdge.isTrigger = true;
         _rightEdge.isTrigger = true;
+        
+        // var size = new Vector2(_circleCollider.radius, _circleCollider.radius);
+        var size = _bodyCollider.bounds.size;
+        var edgeSize =new Vector2(size.x / 2, size.x / 2);
+        _leftEdge.size = edgeSize;
+        _rightEdge.size = edgeSize;
 
-        var size = new Vector2(_circleCollider.radius, _circleCollider.radius);
-        _leftEdge.size = size;
-        _rightEdge.size = size;
-
-        var offset = -size / 2;
+        var offset = -edgeSize / 2;
         _leftEdge.offset = offset;
         _rightEdge.offset = new Vector2(-offset.x, offset.y);
     }
@@ -88,7 +90,7 @@ public class SonicController2D : MonoBehaviour, IAnimationEvent
         if (move == Vector2.zero)
             return;
 
-        (var currentNormal, float distance, float _) = FindNearestNormal(move, move.magnitude, _circleCollider);
+        (var currentNormal, float distance, float _) = FindNearestNormal(move, move.magnitude, _bodyCollider);
 
         var tail = move.magnitude - distance;
         _rigidbody.position += move * (distance / move.magnitude);
@@ -114,7 +116,7 @@ public class SonicController2D : MonoBehaviour, IAnimationEvent
             FindNearestNormal(_groundNormal * dir, Math.Abs(force), _rightEdge);
 
         var (normal, distance, hitCount) =
-            FindNearestNormal(_groundNormal * dir, Math.Abs(force), _circleCollider);
+            FindNearestNormal(_groundNormal * dir, Math.Abs(force), _bodyCollider);
 
         if (_grounded)
         {
