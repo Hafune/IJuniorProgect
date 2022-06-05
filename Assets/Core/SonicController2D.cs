@@ -22,9 +22,9 @@ public class SonicController2D : MonoBehaviour, IAnimationEvent
     private BoxCollider2D _rightEdge = null!;
     private ContactFilter2D _contactFilter;
     private RaycastHit2D[] _hitBuffer = new RaycastHit2D[16];
-    private float hitDistance = 0f;
-    private float hitDistanceOffset = .004f;
-    private float maxNormalAngle = 60f;
+    private float _hitDistance = 0f;
+    private float _groundOffset = .004f;
+    private float _maxNormalAngle = 60f;
 
     public bool OnGround => _grounded;
     public float HorizontalVelocity => _velocity.x;
@@ -46,10 +46,10 @@ public class SonicController2D : MonoBehaviour, IAnimationEvent
 
         _leftEdge.isTrigger = true;
         _rightEdge.isTrigger = true;
-        
+
         // var size = new Vector2(_circleCollider.radius, _circleCollider.radius);
         var size = _bodyCollider.bounds.size;
-        var edgeSize =new Vector2(size.x / 2, size.x / 2);
+        var edgeSize = new Vector2(size.x / 2, size.x / 2);
         _leftEdge.size = edgeSize;
         _rightEdge.size = edgeSize;
 
@@ -67,25 +67,27 @@ public class SonicController2D : MonoBehaviour, IAnimationEvent
         _grounded = false;
 
         var deltaPosition = _velocity * Time.deltaTime;
-        var move = MoveAlong(_groundNormal) * deltaPosition.x;
+        var move = CalculateMoveAlong(_groundNormal) * deltaPosition.x;
 
         UpdateGroundCollider(deltaPosition.y);
         ChangePosition(move);
     }
 
-    private Vector2 MoveAlong(Vector2 normal) => new Vector2(normal.y, -normal.x);
+    private Vector2 CalculateMoveAlong(Vector2 normal) => new Vector2(normal.y, -normal.x);
+
+    private void ResetVerticalVelocity() => _velocity.y = -2f;
 
     private bool ChangeGroundNormal(Vector2 newNormal)
     {
-        _groundNormal = Vector2.Angle(_groundNormal, newNormal) < maxNormalAngle ? newNormal : _groundNormal;
+        _groundNormal = Vector2.Angle(_groundNormal, newNormal) < _maxNormalAngle ? newNormal : _groundNormal;
         return newNormal == _groundNormal;
     }
 
     private void ChangePosition(Vector2 move, float maxRecursion = 1)
     {
-        hitDistance = Math.Max(hitDistance - hitDistanceOffset, 0);
-        _rigidbody.position += _slopeNormal * (hitDistance * Math.Sign(_velocity.y));
-        hitDistance = 0;
+        _hitDistance = Math.Max(_hitDistance - _groundOffset, 0);
+        _rigidbody.position += _slopeNormal * (_hitDistance * Math.Sign(_velocity.y));
+        _hitDistance = 0;
 
         if (move == Vector2.zero)
             return;
@@ -95,11 +97,11 @@ public class SonicController2D : MonoBehaviour, IAnimationEvent
         var tail = move.magnitude - distance;
         _rigidbody.position += move * (distance / move.magnitude);
 
-        if (maxRecursion <= 0 || tail < hitDistanceOffset || _slopeNormal != _groundNormal)
+        if (maxRecursion <= 0 || tail < _groundOffset || _slopeNormal != _groundNormal)
             return;
 
         ChangeGroundNormal(currentNormal);
-        ChangePosition(MoveAlong(_groundNormal) * (tail * Math.Sign(_velocity.x)), --maxRecursion);
+        ChangePosition(CalculateMoveAlong(_groundNormal) * (tail * Math.Sign(_velocity.x)), --maxRecursion);
     }
 
     private void UpdateGroundCollider(float force)
@@ -144,7 +146,7 @@ public class SonicController2D : MonoBehaviour, IAnimationEvent
 
     private void ChangeGroundNormal(Vector2 normal, float distance, int hitCount, float force)
     {
-        hitDistance = distance;
+        _hitDistance = distance;
 
         if (hitCount == 0)
         {
@@ -157,11 +159,11 @@ public class SonicController2D : MonoBehaviour, IAnimationEvent
         {
             _slopeNormal = _groundNormal;
             _grounded = true;
-            _velocity.y = -2;
+            ResetVerticalVelocity();
             return;
         }
 
-        hitDistance = Math.Abs(force);
+        _hitDistance = Math.Abs(force);
         _slopeNormal = new Vector2(-normal.y, normal.x);
 
         if (_slopeNormal.y < 0)
@@ -170,8 +172,8 @@ public class SonicController2D : MonoBehaviour, IAnimationEvent
         if (Vector2.Angle(_slopeNormal, Vector2.right * Math.Sign(_slopeNormal.x)) > 45)
             return;
 
-        hitDistance = 0;
-        _velocity.y = -2;
+        _hitDistance = 0;
+        ResetVerticalVelocity();
     }
 
     private (Vector2 normal, float distance, int hitCount) FindNearestNormal(
