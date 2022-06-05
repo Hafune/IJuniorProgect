@@ -3,7 +3,7 @@
  using UnityEngine;
 
  [RequireComponent(typeof(Rigidbody2D))]
- public class MyPhysics2DCustom : MonoBehaviour
+ public class MyPhysicsController2D : MonoBehaviour
  {
      // private const float shellRadius = 0.01f;
 
