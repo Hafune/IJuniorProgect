@@ -105,7 +105,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 6200000, guid: d8855cc7e9081d541931346ed1923cfc, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -168,28 +168,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d39e756c0c045664191f5e6054f5f61f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _setForceX:
+  _setForce:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6405447097506192203}
-        m_TargetAssemblyTypeName: MyController2D, Assembly-CSharp
-        m_MethodName: SetForceX
+        m_TargetAssemblyTypeName: PhysicsCharacter2D, Assembly-CSharp
+        m_MethodName: SetForce
         m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _tryJump:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6405447097506192203}
-        m_TargetAssemblyTypeName: MyController2D, Assembly-CSharp
-        m_MethodName: TryJimp
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

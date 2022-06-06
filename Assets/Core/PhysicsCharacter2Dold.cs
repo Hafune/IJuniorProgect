@@ -3,10 +3,8 @@
  using UnityEngine;
 
  [RequireComponent(typeof(Rigidbody2D))]
- public class MyPhysicsController2D : MonoBehaviour
+ public class PhysicsCharacter2Dold : MonoBehaviour
  {
-     // private const float shellRadius = 0.01f;
-
      [SerializeField] private float _minGroundNormalY = .65f;
      [SerializeField] private LayerMask _layerMask;
      [SerializeField] private Vector2 _velocity;

@@ -3,14 +3,14 @@ using Core;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class MyController2D : MonoBehaviour, IAnimationEvent
+public class PhysicsCharacter2D : MonoBehaviour, IAnimationEvent
 {
     [SerializeField] private LayerMask _layerMask;
     [SerializeField] private Vector2 _velocity;
 
     private bool _grounded;
-    private float _jumpForce = 10f;
-    private float _moveForce = 8f;
+    private float _jumpScale = 10f;
+    private float _moveScale = 8f;
     private Vector2 _targetVelocity = Vector2.zero;
     private Vector2 _groundNormal = Vector2.up;
     private Vector2 _slopeNormal = Vector2.up;
@@ -24,9 +24,7 @@ public class MyController2D : MonoBehaviour, IAnimationEvent
     public bool OnGround => _grounded;
     public float HorizontalVelocity => _velocity.x;
 
-    public void SetForceX(float force) => _targetVelocity.x = force;
-
-    public void TryJimp() => _targetVelocity.y = _grounded ? 1 : 0;
+    public void SetForce(Vector2 force) => _targetVelocity = force;
 
     private void Start()
     {
@@ -38,11 +36,15 @@ public class MyController2D : MonoBehaviour, IAnimationEvent
 
     private void FixedUpdate()
     {
-        _velocity.y += _targetVelocity.y * _jumpForce + Physics2D.gravity.y * Time.deltaTime;
-        _velocity.x = _targetVelocity.x * _moveForce;
-        _targetVelocity = Vector2.zero;
+        _velocity.y += Physics2D.gravity.y * Time.deltaTime;
+        _velocity.x = _targetVelocity.x * _moveScale;
+
+        if (_grounded)
+            _velocity.y += _targetVelocity.y * _jumpScale;
+
         _grounded = false;
-        
+        _targetVelocity = Vector2.zero;
+
         var deltaPosition = _velocity * Time.deltaTime;
         var move = CalculateMoveAlong(_groundNormal) * deltaPosition.x;
 
@@ -51,7 +53,7 @@ public class MyController2D : MonoBehaviour, IAnimationEvent
     }
 
     private Vector2 CalculateMoveAlong(Vector2 normal) => new Vector2(normal.y, -normal.x);
-    
+
     private void ResetVerticalVelocity() => _velocity.y = -2f;
 
     private bool ChangeGroundNormal(Vector2 newNormal)

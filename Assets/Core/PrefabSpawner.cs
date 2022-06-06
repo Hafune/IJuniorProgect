@@ -30,7 +30,10 @@ public class PrefabSpawner : MonoBehaviour
         );
 
         if (_spawnPointIndex >= _spawnPoints.Length)
+        {
+            Destroy(gameObject);
             return;
+        }
 
         SpawnPrefab();
     }
