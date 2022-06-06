@@ -9,7 +9,7 @@ public class PhysicsMovement : MonoBehaviour
 
     private PlayerInput _playerInput = null!;
 
-    private void Update()
+    private void FixedUpdate()
     {
         _setForceX.Invoke(_playerInput.Player.Move.ReadValue<Vector2>().x);
 

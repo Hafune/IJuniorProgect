@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Collider2D))]
 public class SonicController2D : MonoBehaviour, IAnimationEvent
 {
     [SerializeField] private LayerMask _layerMask;
@@ -14,12 +15,13 @@ public class SonicController2D : MonoBehaviour, IAnimationEvent
     private float _jumpForce = 10f;
     private float _moveForce = 8f;
     private Vector2 _targetVelocity = Vector2.zero;
+    private Vector2 _airVelocity = Vector2.zero;
     private Vector2 _groundNormal = Vector2.up;
     private Vector2 _slopeNormal = Vector2.up;
     private Rigidbody2D _rigidbody = null!;
     private Collider2D _bodyCollider = null!;
-    private BoxCollider2D _leftEdge = null!;
-    private BoxCollider2D _rightEdge = null!;
+    private BoxCollider2D _leftBox = null!;
+    private BoxCollider2D _rightBox = null!;
     private ContactFilter2D _contactFilter;
     private RaycastHit2D[] _hitBuffer = new RaycastHit2D[16];
     private float _hitDistance = 0f;
@@ -41,21 +43,20 @@ public class SonicController2D : MonoBehaviour, IAnimationEvent
         _contactFilter.useTriggers = false;
         _contactFilter.useLayerMask = true;
 
-        _leftEdge = transform.AddComponent<BoxCollider2D>();
-        _rightEdge = transform.AddComponent<BoxCollider2D>();
+        _leftBox = transform.AddComponent<BoxCollider2D>();
+        _rightBox = transform.AddComponent<BoxCollider2D>();
 
-        _leftEdge.isTrigger = true;
-        _rightEdge.isTrigger = true;
+        _leftBox.isTrigger = true;
+        _rightBox.isTrigger = true;
 
-        // var size = new Vector2(_circleCollider.radius, _circleCollider.radius);
         var size = _bodyCollider.bounds.size;
-        var edgeSize = new Vector2(size.x / 2, size.x / 2);
-        _leftEdge.size = edgeSize;
-        _rightEdge.size = edgeSize;
+        var boxSize = new Vector2(size.x / 2, size.x / 2);
+        _leftBox.size = boxSize;
+        _rightBox.size = boxSize;
 
-        var offset = -edgeSize / 2;
-        _leftEdge.offset = offset;
-        _rightEdge.offset = new Vector2(-offset.x, offset.y);
+        var offset = -boxSize / 2;
+        _leftBox.offset = offset;
+        _rightBox.offset = new Vector2(-offset.x, offset.y);
     }
 
     private void FixedUpdate()
@@ -69,7 +70,7 @@ public class SonicController2D : MonoBehaviour, IAnimationEvent
         var deltaPosition = _velocity * Time.deltaTime;
         var move = CalculateMoveAlong(_groundNormal) * deltaPosition.x;
 
-        UpdateGroundCollider(deltaPosition.y);
+        UpdateGroundNormal(deltaPosition.y);
         ChangePosition(move);
     }
 
@@ -104,18 +105,18 @@ public class SonicController2D : MonoBehaviour, IAnimationEvent
         ChangePosition(CalculateMoveAlong(_groundNormal) * (tail * Math.Sign(_velocity.x)), --maxRecursion);
     }
 
-    private void UpdateGroundCollider(float force)
+    private void UpdateGroundNormal(float force)
     {
-        _leftEdge.isTrigger = true;
-        _rightEdge.isTrigger = true;
+        _leftBox.isTrigger = true;
+        _rightBox.isTrigger = true;
 
         int dir = Math.Sign(force) == 0 ? -1 : Math.Sign(force);
 
         var (lNormal, lDistance, lHitCount) =
-            FindNearestNormal(_groundNormal * dir, Math.Abs(force), _leftEdge);
+            FindNearestNormal(_groundNormal * dir, Math.Abs(force), _leftBox);
 
         var (rNormal, rDistance, rHitCount) =
-            FindNearestNormal(_groundNormal * dir, Math.Abs(force), _rightEdge);
+            FindNearestNormal(_groundNormal * dir, Math.Abs(force), _rightBox);
 
         var (normal, distance, hitCount) =
             FindNearestNormal(_groundNormal * dir, Math.Abs(force), _bodyCollider);
@@ -128,17 +129,17 @@ public class SonicController2D : MonoBehaviour, IAnimationEvent
                 ChangeGroundNormal(force: force, normal: rNormal, distance: rDistance, hitCount: rHitCount);
             else ChangeGroundNormal(force: force, normal: normal, distance: distance, hitCount: hitCount);
 
-            _leftEdge.isTrigger = lHitCount == 0;
-            _rightEdge.isTrigger = rHitCount == 0;
+            _leftBox.isTrigger = lHitCount == 0;
+            _rightBox.isTrigger = rHitCount == 0;
         }
         else if (lNormal == _groundNormal && lHitCount > 0 && rHitCount == 0)
         {
-            _leftEdge.isTrigger = false;
+            _leftBox.isTrigger = false;
             ChangeGroundNormal(force: force, normal: lNormal, distance: lDistance, hitCount: lHitCount);
         }
         else if (rNormal == _groundNormal && rHitCount > 0 && lHitCount == 0)
         {
-            _rightEdge.isTrigger = false;
+            _rightBox.isTrigger = false;
             ChangeGroundNormal(force: force, normal: rNormal, distance: rDistance, hitCount: rHitCount);
         }
         else ChangeGroundNormal(force: force, normal: normal, distance: distance, hitCount: hitCount);

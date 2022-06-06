@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 8290310961647646257}
   - component: {fileID: 8290310961647646261}
   - component: {fileID: 8290310961647646260}
-  - component: {fileID: -6138705699852865791}
   - component: {fileID: 5395125714024443091}
+  - component: {fileID: 6405447097506192203}
   m_Layer: 6
   m_Name: Custom
   m_TagString: Untagged
@@ -104,7 +104,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: d8855cc7e9081d541931346ed1923cfc, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -156,25 +156,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-6138705699852865791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8290310961647646259}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87622ad215294ecfb6cea90c1edaf81d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _minGroundNormalY: 0.65
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  _velocity: {x: 0, y: 0}
-  friction: 15
-  speed: 60
 --- !u!114 &5395125714024443091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,8 +171,8 @@ MonoBehaviour:
   _setForceX:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -6138705699852865791}
-        m_TargetAssemblyTypeName: MyPhysics2DCustom, Assembly-CSharp
+      - m_Target: {fileID: 6405447097506192203}
+        m_TargetAssemblyTypeName: MyController2D, Assembly-CSharp
         m_MethodName: SetForceX
         m_Mode: 0
         m_Arguments:
@@ -205,8 +186,8 @@ MonoBehaviour:
   _tryJump:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -6138705699852865791}
-        m_TargetAssemblyTypeName: MyPhysics2DCustom, Assembly-CSharp
+      - m_Target: {fileID: 6405447097506192203}
+        m_TargetAssemblyTypeName: MyController2D, Assembly-CSharp
         m_MethodName: TryJimp
         m_Mode: 1
         m_Arguments:
@@ -217,3 +198,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6405447097506192203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8290310961647646259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66c3adeb4d6b43d29e27daaa6979e0cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  _velocity: {x: 0, y: 0}

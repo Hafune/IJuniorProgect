@@ -17,9 +17,9 @@ public class MyController2D : MonoBehaviour, IAnimationEvent
     private Rigidbody2D _rigidbody;
     private ContactFilter2D _contactFilter;
     private RaycastHit2D[] _hitBuffer = new RaycastHit2D[16];
-    private float hitDistance = 0f;
-    private float hitDistanceOffset = .004f;
-    private float maxNormalAngle = 60f;
+    private float _hitDistance = 0f;
+    private float _groundOffset = .004f;
+    private float _maxNormalAngle = 60f;
 
     public bool OnGround => _grounded;
     public float HorizontalVelocity => _velocity.x;
@@ -44,24 +44,27 @@ public class MyController2D : MonoBehaviour, IAnimationEvent
         _grounded = false;
         
         var deltaPosition = _velocity * Time.deltaTime;
-        var move = MoveAlong(_groundNormal) * deltaPosition.x;
+        var move = CalculateMoveAlong(_groundNormal) * deltaPosition.x;
 
-        ChangeGroundNormal(deltaPosition.y);
+        UpdateGroundNormal(deltaPosition.y);
         ChangePosition(move);
     }
 
-    private Vector2 MoveAlong(Vector2 normal) => new Vector2(normal.y, -normal.x);
+    private Vector2 CalculateMoveAlong(Vector2 normal) => new Vector2(normal.y, -normal.x);
+    
+    private void ResetVerticalVelocity() => _velocity.y = -2f;
 
     private bool ChangeGroundNormal(Vector2 newNormal)
     {
-        _groundNormal = Vector2.Angle(_groundNormal, newNormal) < maxNormalAngle ? newNormal : _groundNormal;
+        _groundNormal = Vector2.Angle(_groundNormal, newNormal) < _maxNormalAngle ? newNormal : _groundNormal;
         return newNormal == _groundNormal;
     }
 
     private void ChangePosition(Vector2 move, float maxRecursion = 1)
     {
-        _rigidbody.position += _slopeNormal * (hitDistance * Math.Sign(_velocity.y));
-        hitDistance = 0;
+        _hitDistance = Math.Max(_hitDistance - _groundOffset, 0);
+        _rigidbody.position += _slopeNormal * (_hitDistance * Math.Sign(_velocity.y));
+        _hitDistance = 0;
 
         if (move == Vector2.zero)
             return;
@@ -71,18 +74,18 @@ public class MyController2D : MonoBehaviour, IAnimationEvent
         var tail = move.magnitude - distance;
         _rigidbody.position += move * (distance / move.magnitude);
 
-        if (maxRecursion <= 0 || tail < hitDistanceOffset || _slopeNormal != _groundNormal)
+        if (maxRecursion <= 0 || tail < _groundOffset || _slopeNormal != _groundNormal)
             return;
 
         ChangeGroundNormal(currentNormal);
-        ChangePosition(MoveAlong(_groundNormal) * (tail * Math.Sign(_velocity.x)), --maxRecursion);
+        ChangePosition(CalculateMoveAlong(_groundNormal) * (tail * Math.Sign(_velocity.x)), --maxRecursion);
     }
 
-    private void ChangeGroundNormal(float force)
+    private void UpdateGroundNormal(float force)
     {
         int dir = Math.Sign(force) == 0 ? -1 : Math.Sign(force);
         (var normal, float distance, float hitCount) = FindNearestNormal(_groundNormal * dir, Math.Abs(force));
-        hitDistance = distance;
+        _hitDistance = distance;
 
         if (hitCount == 0)
         {
@@ -95,11 +98,11 @@ public class MyController2D : MonoBehaviour, IAnimationEvent
         {
             _slopeNormal = _groundNormal;
             _grounded = true;
-            _velocity.y = -1;
+            ResetVerticalVelocity();
             return;
         }
 
-        hitDistance = Math.Abs(force);
+        _hitDistance = Math.Abs(force);
         _slopeNormal = new Vector2(-normal.y, normal.x);
 
         if (_slopeNormal.y < 0)
@@ -108,8 +111,8 @@ public class MyController2D : MonoBehaviour, IAnimationEvent
         if (Vector2.Angle(_slopeNormal, Vector2.right * Math.Sign(_slopeNormal.x)) > 45)
             return;
 
-        hitDistance = 0;
-        _velocity.y = Physics2D.gravity.y * Time.deltaTime;
+        _hitDistance = 0;
+        ResetVerticalVelocity();
     }
 
     private (Vector2 normal, float distance, int hitCount) FindNearestNormal(Vector2 direction, float castDistance)
@@ -122,7 +125,7 @@ public class MyController2D : MonoBehaviour, IAnimationEvent
         {
             var hit2D = _hitBuffer[i];
             var currentNormal = hit2D.normal;
-            var currentDistance = Math.Min(Math.Max(hit2D.distance - hitDistanceOffset, 0), distance);
+            var currentDistance = hit2D.distance;
 
             if (currentDistance >= distance)
                 continue;

@@ -1,10 +1,7 @@
-using System;
-using System.Collections;
 using UnityEngine;
 
 public class PrefabSpawner : MonoBehaviour
 {
-    [SerializeField] private float _baseCooldown;
     [SerializeField] private GameObject _prefab;
     [SerializeField] private Transform _spawnPointsContainer;
 
@@ -18,26 +15,23 @@ public class PrefabSpawner : MonoBehaviour
         for (int i = 0; i < _spawnPointsContainer.childCount; i++)
             _spawnPoints[i] = _spawnPointsContainer.GetChild(i);
 
-        StartCoroutine(SpawnPrefab());
+        SpawnPrefab();
     }
 
-    private IEnumerator SpawnPrefab()
+    private void SpawnPrefab()
     {
         if (_spawnPoints.Length == 0)
-            yield break;
+            return;
 
         Instantiate(
             _prefab,
-            _spawnPoints[_spawnPointIndex].transform.position,
+            _spawnPoints[_spawnPointIndex++].transform.position,
             Quaternion.identity
         );
-        _spawnPointIndex++;
-
-        yield return new WaitForSeconds(_baseCooldown);
 
         if (_spawnPointIndex >= _spawnPoints.Length)
-            _spawnPointIndex = 0;
+            return;
 
-        StartCoroutine(SpawnPrefab());
+        SpawnPrefab();
     }
 }

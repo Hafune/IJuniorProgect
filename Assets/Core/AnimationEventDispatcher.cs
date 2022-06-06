@@ -11,13 +11,9 @@ public class AnimationEventDispatcher : MonoBehaviour
     [SerializeField] private Animator _animator = null!;
     [SerializeField] private SpriteRenderer _spriteRenderer = null!;
     private IAnimationEvent _myPhysics2D = null!;
-
     private float changeDirectionValue = .01f;
 
-    private void Start()
-    {
-        _myPhysics2D = GetComponent<IAnimationEvent>();
-    }
+    private void Start() => _myPhysics2D = GetComponent<IAnimationEvent>();
 
     private void FixedUpdate()
     {
