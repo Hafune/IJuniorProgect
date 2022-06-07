@@ -11,9 +11,6 @@ public class PhysicsSonic2D : MonoBehaviour, IAnimationEvent
     [SerializeField] private LayerMask _layerMask;
     [SerializeField] private Vector2 _velocity;
 
-    private bool _grounded;
-    private float _jumpScale = 10f;
-    private float _moveScale = 8f;
     private Vector2 _targetVelocity = Vector2.zero;
     private Vector2 _groundNormal = Vector2.up;
     private Vector2 _slopeNormal = Vector2.up;
@@ -23,6 +20,9 @@ public class PhysicsSonic2D : MonoBehaviour, IAnimationEvent
     private BoxCollider2D _rightBox = null!;
     private ContactFilter2D _contactFilter;
     private RaycastHit2D[] _hitBuffer = new RaycastHit2D[16];
+    private bool _grounded;
+    private float _jumpScale = 10f;
+    private float _moveScale = 8f;
     private float _hitDistance = 0f;
     private float _groundOffset = .004f;
     private float _maxNormalAngle = 60f;

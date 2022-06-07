@@ -1,16 +1,16 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class TriggerCallbackDisposable : MonoBehaviour
+public class CollectEventDisposable : MonoBehaviour
 {
-    [SerializeField] private UnityEvent<GameObject> _enterEvent = null!;
+    [SerializeField] private UnityEvent<Collider2D> _enterEvent = null!;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!isActiveAndEnabled)
             return;
         
-        _enterEvent?.Invoke(gameObject);
+        _enterEvent?.Invoke(other);
         Destroy(this);
     }
 }

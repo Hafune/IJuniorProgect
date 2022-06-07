@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PrefabSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject _prefab;
-    [SerializeField] private Transform _spawnPointsContainer;
+    [SerializeField] private GameObject _prefab = null!;
+    [SerializeField] private Transform _spawnPointsContainer = null!;
 
     private int _spawnPointIndex;
     private Transform[] _spawnPoints = null!;
