@@ -39,6 +39,7 @@ public class PhysicsSonic2D : MonoBehaviour, IAnimationEvent
         _contactFilter.SetLayerMask(_layerMask);
         _contactFilter.useTriggers = false;
         _contactFilter.useLayerMask = true;
+        _groundNormal = Quaternion.Euler(0f, 0f, _rigidbody.rotation) * _groundNormal;
 
         _leftBox = transform.AddComponent<BoxCollider2D>();
         _rightBox = transform.AddComponent<BoxCollider2D>();

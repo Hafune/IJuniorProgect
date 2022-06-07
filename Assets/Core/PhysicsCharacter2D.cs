@@ -11,7 +11,7 @@ public class PhysicsCharacter2D : MonoBehaviour, IAnimationEvent
     private Vector2 _targetVelocity = Vector2.zero;
     private Vector2 _groundNormal = Vector2.up;
     private Vector2 _slopeNormal = Vector2.up;
-    private Rigidbody2D _rigidbody;
+    private Collider2D _bodyCollider;
     private ContactFilter2D _contactFilter;
     private RaycastHit2D[] _hitBuffer = new RaycastHit2D[16];
     private bool _grounded;
@@ -28,7 +28,7 @@ public class PhysicsCharacter2D : MonoBehaviour, IAnimationEvent
 
     private void Start()
     {
-        _rigidbody = GetComponent<Rigidbody2D>();
+        _bodyCollider = GetComponent<Collider2D>();
         _contactFilter.SetLayerMask(_layerMask);
         _contactFilter.useTriggers = false;
         _contactFilter.useLayerMask = true;
@@ -65,7 +65,7 @@ public class PhysicsCharacter2D : MonoBehaviour, IAnimationEvent
     private void ChangePosition(Vector2 move, float maxRecursion = 1)
     {
         _hitDistance = Math.Max(_hitDistance - _groundOffset, 0);
-        _rigidbody.position += _slopeNormal * (_hitDistance * Math.Sign(_velocity.y));
+        _bodyCollider.attachedRigidbody.position += _slopeNormal * (_hitDistance * Math.Sign(_velocity.y));
         _hitDistance = 0;
 
         if (move == Vector2.zero)
@@ -74,7 +74,7 @@ public class PhysicsCharacter2D : MonoBehaviour, IAnimationEvent
         (var currentNormal, float distance, float _) = FindNearestNormal(move, move.magnitude);
 
         var tail = move.magnitude - distance;
-        _rigidbody.position += move * (distance / move.magnitude);
+        _bodyCollider.attachedRigidbody.position += move * (distance / move.magnitude);
 
         if (maxRecursion <= 0 || tail < _groundOffset || _slopeNormal != _groundNormal)
             return;
@@ -119,7 +119,7 @@ public class PhysicsCharacter2D : MonoBehaviour, IAnimationEvent
 
     private (Vector2 normal, float distance, int hitCount) FindNearestNormal(Vector2 direction, float castDistance)
     {
-        int count = _rigidbody.Cast(direction, _contactFilter, _hitBuffer, castDistance);
+        int count = _bodyCollider.Cast(direction, _contactFilter, _hitBuffer, castDistance);
         var distance = castDistance;
         var normal = _groundNormal;
 

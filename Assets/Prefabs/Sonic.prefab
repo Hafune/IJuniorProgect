@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1401156689653345089}
   - component: {fileID: 2581693432070142471}
   - component: {fileID: 7961115195045769245}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,6 @@ GameObject:
   - component: {fileID: 8290310961647646263}
   - component: {fileID: 8290310961647646257}
   - component: {fileID: 2336002303088444645}
-  - component: {fileID: -2488860380790242867}
   - component: {fileID: 3189533545525630911}
   - component: {fileID: 1039436759}
   m_Layer: 6
@@ -177,33 +176,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 7961115195045769245}
   _spriteRenderer: {fileID: 2581693432070142471}
---- !u!114 &-2488860380790242867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8290310961647646259}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d39e756c0c045664191f5e6054f5f61f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _setForce:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3189533545525630911}
-        m_TargetAssemblyTypeName: PhysicsSonic2D, Assembly-CSharp
-        m_MethodName: SetForce
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &3189533545525630911
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ public class CollectorFollow : MonoBehaviour
 
     private void Update()
     {
-        if (_target == null)
+        if (!_target)
             return;
 
         var lastPosition = new Vector2(transform.position.x, transform.position.y);
@@ -28,14 +28,15 @@ public class CollectorFollow : MonoBehaviour
                           (targetPosition - newPosition).sqrMagnitude
             ? _speed
             : _speed * 2f;
+        modifySpeed += modifySpeed * (_currentTime * _currentTime) / 5;
         _velocity.x += targetPosition.x > transform.position.x ? modifySpeed : -modifySpeed;
         _velocity.y += targetPosition.y > transform.position.y ? modifySpeed : -modifySpeed;
         _currentTime += Time.deltaTime;
 
-        if ((targetPosition - newPosition).sqrMagnitude < .5f && _currentTime > _skipTime)
-        {
-            Destroy(gameObject);
-            _coinCollected.Invoke();
-        }
+        if ((targetPosition - newPosition).sqrMagnitude > .5f || _skipTime > _currentTime)
+            return;
+
+        Destroy(gameObject);
+        _coinCollected.Invoke();
     }
 }
