@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class BarController : MonoBehaviour
+public class HealthInput : MonoBehaviour
 {
-    [SerializeField] private UnityEvent<float> _incrementPoints;
+    [SerializeField] private UnityEvent<float> _dealDamage;
+    [SerializeField] private UnityEvent<float> _addHealth;
 
     private PlayerInput _playerInput = null!;
 
@@ -21,6 +22,9 @@ public class BarController : MonoBehaviour
         float pointsPerStep = 10f;
         var nextPoints = _playerInput.Player.Move.ReadValue<Vector2>().x * pointsPerStep;
 
-        _incrementPoints.Invoke(nextPoints);
+        if (nextPoints < 0)
+            _dealDamage.Invoke(-nextPoints);
+        else
+            _addHealth.Invoke(nextPoints);
     }
 }
