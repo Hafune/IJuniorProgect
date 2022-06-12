@@ -9,7 +9,7 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(float value) => ChangePoints(-value);
 
-    public void AddPoint(float value) => ChangePoints(value);
+    public void AddHealth(float value) => ChangePoints(value);
 
     private void ChangePoints(float value)
     {

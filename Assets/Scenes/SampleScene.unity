@@ -26565,7 +26565,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 339249210}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d39e756c0c045664191f5e6054f5f61f, type: 3}
   m_Name: 
@@ -26617,7 +26617,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1627562464}
         m_TargetAssemblyTypeName: HealthPoints, Assembly-CSharp
-        m_MethodName: AddPoint
+        m_MethodName: AddHealth
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -27383,7 +27383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3ecbe11e85475647b4814609206f22e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxEffectMultiplier: {x: -0.5, y: 0}
+  parallaxEffectMultiplier: {x: 0.5, y: 0}
   infiniteHorizontal: 1
   infiniteVertical: 0
 --- !u!1 &1923696836
