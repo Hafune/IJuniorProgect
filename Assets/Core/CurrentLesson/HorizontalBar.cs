@@ -1,9 +1,7 @@
-using System;
 using System.Collections;
 using JetBrains.Annotations;
 using Lib;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class HorizontalBar : MonoBehaviour
 {

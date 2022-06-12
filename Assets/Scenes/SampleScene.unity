@@ -2008,7 +2008,6 @@ GameObject:
   - component: {fileID: 371601224}
   - component: {fileID: 371601223}
   - component: {fileID: 371601225}
-  - component: {fileID: 371601226}
   m_Layer: 0
   m_Name: BarImage
   m_TagString: Untagged
@@ -2090,45 +2089,6 @@ MonoBehaviour:
   _changeDelay: 0
   _changeSpeed: 1
   _currentPercent: 1
---- !u!114 &371601226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 371601221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e3f58b5cedfc5444b97e32a2e5259d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _setPercent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 371601225}
-        m_TargetAssemblyTypeName: Bar, Assembly-CSharp
-        m_MethodName: SetPercent
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 308535528}
-        m_TargetAssemblyTypeName: Bar, Assembly-CSharp
-        m_MethodName: SetPercent
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &424636264
 GameObject:
   m_ObjectHideFlags: 0
@@ -26034,12 +25994,12 @@ RectTransform:
   - {fileID: 369227643}
   - {fileID: 195076541}
   - {fileID: 501580012}
-  m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_Father: {fileID: 1627562453}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -3.419, y: -1.569}
+  m_AnchoredPosition: {x: 0, y: 1.5}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1505440168
@@ -26625,6 +26585,74 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1627562463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339249210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e3f58b5cedfc5444b97e32a2e5259d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _incrementPoints:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1627562464}
+        m_TargetAssemblyTypeName: HealthPoints, Assembly-CSharp
+        m_MethodName: IncrementPoints
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1627562464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339249210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87e1c87164514a4695315fe7a899e22b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _setPercent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 371601225}
+        m_TargetAssemblyTypeName: HorizontalBar, Assembly-CSharp
+        m_MethodName: SetPercent
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 308535528}
+        m_TargetAssemblyTypeName: HorizontalBar, Assembly-CSharp
+        m_MethodName: SetPercent
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _maxPoints: 100
+  _currentPoints: 100
 --- !u!1 &1712802213
 GameObject:
   m_ObjectHideFlags: 0

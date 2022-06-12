@@ -3,11 +3,9 @@ using UnityEngine.Events;
 
 public class BarController : MonoBehaviour
 {
-    [SerializeField] private UnityEvent<float> _setPercent;
+    [SerializeField] private UnityEvent<float> _incrementPoints;
 
     private PlayerInput _playerInput = null!;
-    private float _maxPoints = 100f!;
-    private float _currentPoints = 100f!;
 
     private void Awake() => _playerInput = new PlayerInput();
 
@@ -22,8 +20,7 @@ public class BarController : MonoBehaviour
 
         float pointsPerStep = 10f;
         var nextPoints = _playerInput.Player.Move.ReadValue<Vector2>().x * pointsPerStep;
-        _currentPoints = Mathf.Clamp(_currentPoints + nextPoints, 0f, _maxPoints);
 
-        _setPercent.Invoke(_currentPoints / _maxPoints);
+        _incrementPoints.Invoke(nextPoints);
     }
 }
