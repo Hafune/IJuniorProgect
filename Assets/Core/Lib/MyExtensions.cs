@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using Random = System.Random;
 
@@ -34,6 +33,15 @@ namespace Lib
             }
         }
 
-        public static float Angle(this Vector2 vector2) => (float) (Math.Atan2(vector2.y, vector2.x) * (180 / Math.PI));
+        public static float Angle(this Vector2 vector) => (float) (Math.Atan2(vector.y, vector.x) * (180 / Math.PI));
+
+        public static Vector3 Copy(this Vector3 vector, float x = float.NaN, float y = float.NaN, float z = float.NaN)
+        {
+            return new Vector3(
+                float.IsNaN(x) ? vector.x : x,
+                float.IsNaN(y) ? vector.y : y,
+                float.IsNaN(z) ? vector.z : z
+            );
+        }
     }
 }
