@@ -35,13 +35,27 @@ namespace Lib
 
         public static float Angle(this Vector2 vector) => (float) (Math.Atan2(vector.y, vector.x) * (180 / Math.PI));
 
-        public static Vector3 Copy(this Vector3 vector, float x = float.NaN, float y = float.NaN, float z = float.NaN)
-        {
-            return new Vector3(
-                float.IsNaN(x) ? vector.x : x,
-                float.IsNaN(y) ? vector.y : y,
-                float.IsNaN(z) ? vector.z : z
+        public static Vector3 Copy(this Vector3 vector, float? x = null, float? y = null, float? z = null) =>
+            new Vector3(
+                x ?? vector.x,
+                y ?? vector.y,
+                z ?? vector.z
             );
+
+        public static Vector2 Copy(this Vector2 vector, float? x = null, float? y = null) =>
+            new Vector2(
+                x ?? vector.x,
+                y ?? vector.y
+            );
+
+        public static Vector2 RotateBy(this Vector2 v, float a)
+        {
+            a *= Mathf.Deg2Rad;
+            var ca = Math.Cos(a);
+            var sa = Math.Sin(a);
+            var rx = v.x * ca - v.y * sa;
+
+            return new Vector2((float) rx, (float) (v.x * sa + v.y * ca));
         }
     }
 }

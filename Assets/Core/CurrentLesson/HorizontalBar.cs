@@ -3,15 +3,16 @@ using JetBrains.Annotations;
 using Lib;
 using UnityEngine;
 
+[RequireComponent(typeof(RectTransform))]
 public class HorizontalBar : MonoBehaviour
 {
-    [SerializeField] private float _maxWidth;
+    private float _maxWidth;
     [SerializeField] [Min(0)] private float _changeDelay = 0f;
     [SerializeField] [Min(0.0001f)] private float _changeSpeed = 1f;
     [SerializeField] [Range(0f, 1f)] private float _currentPercent = 1f;
 
     [CanBeNull] private Coroutine _enumerator;
-
+    
     public void SetPercent(float percent)
     {
         _currentPercent = Mathf.Clamp(percent, 0f, 1f);
@@ -22,7 +23,12 @@ public class HorizontalBar : MonoBehaviour
         _enumerator = StartCoroutine(AnimatePosition());
     }
 
-    private void Start() => SetPercent(_currentPercent);
+    private void Start()
+    {
+        var rect = GetComponent<RectTransform>();
+        _maxWidth = rect.rect.width;
+        SetPercent(_currentPercent);
+    }
 
     private IEnumerator AnimatePosition()
     {

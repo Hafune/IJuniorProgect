@@ -22,7 +22,7 @@ public class PhysicsFunctions
             var hit2D = _hitBuffer[i];
             var currentDistance = hit2D.distance;
 
-            if (castDistance > currentDistance)
+            if (castDistance > currentDistance && Vector2.Dot(hit2D.normal, direction) < 0)
                 validHits++;
 
             if (currentDistance >= distance)

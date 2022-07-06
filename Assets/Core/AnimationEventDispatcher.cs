@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class AnimationEventDispatcher : MonoBehaviour
 {
-    private static readonly int IsMoving = Animator.StringToHash("isMoving");
-    private static readonly int OnGround = Animator.StringToHash("onGround");
+    private static readonly int IsMoving = Animator.StringToHash("IsMoving");
+    private static readonly int OnGround = Animator.StringToHash("OnGround");
 
     [SerializeField] private Animator _animator = null!;
     [SerializeField] private SpriteRenderer _spriteRenderer = null!;
