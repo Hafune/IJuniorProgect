@@ -2,7 +2,7 @@
 
 namespace Lib
 {
-    public class MyFunc
+    public class MyMath
     {
         public static float ClampBetween(float value, float first, float second) => first <= second
             ? Mathf.Clamp(value, first, second)

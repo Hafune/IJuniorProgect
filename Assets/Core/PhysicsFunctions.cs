@@ -12,26 +12,28 @@ public class PhysicsFunctions
     )
     {
         int count = currentCollider2D.Cast(direction, _contactFilter, _hitBuffer, castDistance);
-        var distance = castDistance;
+        float distance = castDistance;
+        int layer = currentCollider2D.gameObject.layer;
         var normal = Vector2.zero;
 
-        int validHits = 0;
+        // int validHits = 0;
 
         for (int i = 0; i < count; i++)
         {
             var hit2D = _hitBuffer[i];
             var currentDistance = hit2D.distance;
 
-            if (castDistance > currentDistance && Vector2.Dot(hit2D.normal, direction) < 0)
-                validHits++;
+            // if (castDistance > currentDistance && Vector2.Dot(hit2D.normal, direction) <= 0)
+            //     validHits++;
 
-            if (currentDistance >= distance)
+            if (currentDistance >= distance || Vector2.Dot(hit2D.normal, direction) > 0)
                 continue;
 
             distance = currentDistance;
             normal = hit2D.normal;
+            layer = hit2D.transform.gameObject.layer;
         }
 
-        return (normal, distance, validHits);
+        return (normal, distance, layer);
     }
 }

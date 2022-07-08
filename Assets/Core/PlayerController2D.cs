@@ -14,6 +14,8 @@ public class PlayerController2D : MonoBehaviour
 
     private void OnDisable() => _playerInput.Disable();
 
+    private float x;
+
     private void FixedUpdate()
     {
         var force = new Vector2(_playerInput.Player.Move.ReadValue<Vector2>().x, 0);
@@ -21,6 +23,18 @@ public class PlayerController2D : MonoBehaviour
         if (_playerInput.Player.Jump.IsPressed())
             force.y = 1;
 
+        // if (force.x != 0)
+        // {
+        //     if (x == force.x)
+        //     {
+        //         x = 0;
+        //     }
+        //     else
+        //     {
+        //         x = force.x;
+        //     }
+        // }
+        // force.x = x;
         _setForce.Invoke(force);
     }
 }

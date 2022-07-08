@@ -8,7 +8,6 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Collider2D))]
 public class PhysicsSonic2D : MonoBehaviour
 {
-    [SerializeField] private LayerMask _layerMask;
     [SerializeField] private UnityEvent<float> _setHorizontalForce;
     [SerializeField] private UnityEvent<bool> _setGrounded;
 
@@ -20,7 +19,7 @@ public class PhysicsSonic2D : MonoBehaviour
     private readonly PhysicsFunctions _functions = new PhysicsFunctions();
     private const float _jumpScale = 10f;
     private const float _moveScale = 8f;
-    private const float _maxHorizontalSpeed = 8f;
+    private const float _maxHorizontalSpeed = 40f;
     private const float _maxVerticalSpeed = 40f;
     private const float _groundOffset = .004f;
     private const float _maxNormalAngle = 50f;
@@ -41,7 +40,7 @@ public class PhysicsSonic2D : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _bodyCollider = GetComponent<Collider2D>();
-        _contactFilter.SetLayerMask(_layerMask);
+        _contactFilter.SetLayerMask(Physics2D.GetLayerCollisionMask(gameObject.layer));
         _contactFilter.useTriggers = false;
         _contactFilter.useLayerMask = true;
         _groundNormal = Quaternion.Euler(0f, 0f, _rigidbody.rotation) * _groundNormal;
@@ -67,10 +66,12 @@ public class PhysicsSonic2D : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _velocity.x += _targetVelocity.x * _moveScale * (_accelerationTime / Time.deltaTime);
-        _velocity.x = MyFunc.ClampBetween(_velocity.x - Math.Sign(_velocity.x) *
-            (_grounded ? _groundFriction : _airFriction), _velocity.x, 0f);
-        _velocity.y += Physics2D.gravity.y * Time.deltaTime;
+        var gravity = _groundNormal * (Physics2D.gravity.y * Time.deltaTime);
+        var friction = Math.Sign(_velocity.x) * (_grounded ? _groundFriction : _airFriction);
+        
+        _velocity.x += _targetVelocity.x * _moveScale * (_accelerationTime / Time.deltaTime) - gravity.x;
+        _velocity.x = MyMath.ClampBetween(_velocity.x - friction, _velocity.x, 0f);
+        _velocity.y += gravity.y;
 
         if (_grounded && _targetVelocity.y > 0)
             _velocity.y += _targetVelocity.y * _jumpScale;
@@ -90,12 +91,13 @@ public class PhysicsSonic2D : MonoBehaviour
         else
             UpdateGroundNormal(deltaPosition.y);
 
+        ChangePositionByGravity();
         ChangePosition(move);
 
         _setHorizontalForce.Invoke(deltaPosition.x);
         _setGrounded.Invoke(_grounded);
 
-        _rigidbody.SetRotation(Vector2.SignedAngle(Vector2.up, _slopeNormal));
+        _rigidbody.SetRotation(Vector2.SignedAngle(Vector2.up, _groundNormal));
     }
 
     private Vector2 CalculateMoveAlong(Vector2 normal) => new Vector2(normal.y, -normal.x);
@@ -105,16 +107,20 @@ public class PhysicsSonic2D : MonoBehaviour
     private bool validateNextGroundNormal(Vector2 newNormal) =>
         newNormal != Vector2.zero && Vector2.Angle(_groundNormal, newNormal) < _maxNormalAngle;
 
-    private void ChangePosition(Vector2 move, float maxRecursion = 1)
+    private void ChangePositionByGravity()
     {
         _hitDistance = Math.Max(_hitDistance - _groundOffset, 0);
-        _rigidbody.velocity += _slopeNormal * (_hitDistance * Math.Sign(_velocity.y)) / Time.deltaTime;
+        int dir = Math.Sign(_velocity.y) <= 0 ? -1 : 1;
+        _rigidbody.velocity += _groundNormal * (_hitDistance * dir) / Time.deltaTime;
         _hitDistance = 0;
+    }
 
+    private void ChangePosition(Vector2 move, float maxRecursion = 1)
+    {
         if (move == Vector2.zero)
             return;
 
-        (var currentNormal, float distance, float _) =
+        (var normal, float distance, float layer) =
             _functions.FindNearestNormal(move, move.magnitude, _bodyCollider, _contactFilter);
 
         var tail = move.magnitude - distance;
@@ -123,8 +129,10 @@ public class PhysicsSonic2D : MonoBehaviour
         if (maxRecursion <= 0 || tail < _groundOffset || _slopeNormal != _groundNormal)
             return;
 
-        if (validateNextGroundNormal(currentNormal))
-            _groundNormal = currentNormal;
+        if (validateNextGroundNormal(normal))
+            _groundNormal = normal;
+        else
+            _velocity.x = 0f;
 
         ChangePosition(CalculateMoveAlong(_groundNormal) * (tail * Math.Sign(_velocity.x)), --maxRecursion);
     }
@@ -139,39 +147,47 @@ public class PhysicsSonic2D : MonoBehaviour
         int dir = Math.Sign(verticalForce) == 0 ? -1 : Math.Sign(verticalForce);
         float castDistance = Math.Abs(verticalForce);
 
-        var (leftNormal, lDistance, lHitCount) =
+        var (leftNormal, lDistance, leftLayer) =
             _functions.FindNearestNormal(_groundNormal * dir, castDistance, _leftLeg, _contactFilter);
 
-        var (rightNormal, rDistance, rHitCount) =
+        var (rightNormal, rDistance, rightLayer) =
             _functions.FindNearestNormal(_groundNormal * dir, castDistance, _rightLeg, _contactFilter);
 
-        var (normal, distance, hitCount) =
+        var (normal, distance, layer) =
             _functions.FindNearestNormal(_groundNormal * dir, castDistance, _bodyCollider, _contactFilter);
 
-        var leftNormalIsValid = lHitCount > 0 && validateNextGroundNormal(leftNormal);
-        var rightNormalIsValid = rHitCount > 0 && validateNextGroundNormal(rightNormal);
+        var leftNormalIsValid = validateNextGroundNormal(leftNormal);
+        var rightNormalIsValid = validateNextGroundNormal(rightNormal);
 
         if (leftNormalIsValid && !rightNormalIsValid)
         {
             _leftLeg.isTrigger = false;
-            UpdateGroundNormal(force: verticalForce, normal: leftNormal, distance: lDistance, hitCount: lHitCount);
+            UpdateGroundNormal(force: verticalForce, normal: leftNormal, distance: lDistance);
         }
         else if (rightNormalIsValid && !leftNormalIsValid)
         {
             _rightLeg.isTrigger = false;
-            UpdateGroundNormal(force: verticalForce, normal: rightNormal, distance: rDistance, hitCount: rHitCount);
+            UpdateGroundNormal(force: verticalForce, normal: rightNormal, distance: rDistance);
         }
         else
         {
-            UpdateGroundNormal(force: verticalForce, normal: normal, distance: distance, hitCount: hitCount);
+            UpdateGroundNormal(force: verticalForce, normal: normal, distance: distance);
+            _contactFilter.SetLayerMask(Physics2D.GetLayerCollisionMask(layer));
+            gameObject.layer = layer;
+
+            if (_grounded || normal == Vector2.zero)
+                return;
+
+            ChangePositionByGravity();
+            ChangeVelocityByNormal(normal);
         }
     }
 
-    private void UpdateGroundNormal(Vector2 normal, float distance, int hitCount, float force)
+    private void UpdateGroundNormal(Vector2 normal, float distance, float force)
     {
         _hitDistance = distance;
 
-        if (hitCount == 0)
+        if (normal == Vector2.zero)
         {
             if (!_grounded && _lastGrounded)
                 _velocity = _velocity.RotateBy(Vector2.SignedAngle(Vector2.up, _slopeNormal));
@@ -186,34 +202,27 @@ public class PhysicsSonic2D : MonoBehaviour
             _groundNormal = normal;
             _slopeNormal = _groundNormal;
             _grounded = true;
-
             if (!_lastGrounded)
                 ChangeVelocityByNormal(_groundNormal);
 
-            ResetVerticalVelocity();
+            _velocity.y = -2f;
             return;
         }
 
         _hitDistance = Math.Abs(force);
-        _slopeNormal = new Vector2(-normal.y, normal.x);
-
-        if (_slopeNormal.y < 0)
-            _slopeNormal *= -1;
-
-        if (_velocity.y < 0)
-            return;
-
-        if (Vector2.Angle(_slopeNormal, Vector2.right * Math.Sign(_slopeNormal.x)) > 45)
-            return;
-
-        _hitDistance = 0;
-        ResetVerticalVelocity();
+        _slopeNormal = normal;
     }
 
     private void ChangeVelocityByNormal(Vector2 normal)
     {
-        var reflect = Vector2.Reflect(_velocity.normalized, normal);
-        var reflectVelocity = _velocity.RotateBy(Vector2.SignedAngle(_velocity.normalized, reflect));
-        _velocity = (_velocity + reflectVelocity) / 2;
+        if (Vector2.Dot(_velocity, normal) >= 0)
+            return;
+
+        _velocity = (_velocity + _velocity.ReflectBy(normal)) / 2;
+    }
+
+    private void ChangeGroundNormal(Vector2 normal)
+    {
+        _groundNormal = normal;
     }
 }

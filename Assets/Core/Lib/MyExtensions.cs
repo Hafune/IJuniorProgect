@@ -57,5 +57,11 @@ namespace Lib
 
             return new Vector2((float) rx, (float) (v.x * sa + v.y * ca));
         }
+
+        public static Vector2 ReflectBy(this Vector2 vector, Vector2 normal)
+        {
+            var reflect = Vector2.Reflect(vector.normalized, normal);
+            return vector.RotateBy(Vector2.SignedAngle(vector.normalized, reflect));
+        }
     }
 }
