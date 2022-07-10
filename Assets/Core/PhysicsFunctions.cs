@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Lib;
+using UnityEngine;
 
 public class PhysicsFunctions
 {
@@ -7,31 +8,39 @@ public class PhysicsFunctions
     public (Vector2 normal, float distance, int hitCount) FindNearestNormal(
         Vector2 direction,
         float castDistance,
-        Collider2D currentCollider2D,
+        Collider2D collider2D,
         ContactFilter2D _contactFilter
     )
     {
-        int count = currentCollider2D.Cast(direction, _contactFilter, _hitBuffer, castDistance);
+        int count = collider2D.Cast(direction, _contactFilter, _hitBuffer, castDistance, true);
         float distance = castDistance;
-        int layer = currentCollider2D.gameObject.layer;
+        int layer = collider2D.gameObject.layer;
         var normal = Vector2.zero;
-
-        // int validHits = 0;
 
         for (int i = 0; i < count; i++)
         {
-            var hit2D = _hitBuffer[i];
-            var currentDistance = hit2D.distance;
+            var hit2d = _hitBuffer[i];
+            var currentDistance = hit2d.distance;
 
-            // if (castDistance > currentDistance && Vector2.Dot(hit2D.normal, direction) <= 0)
-            //     validHits++;
-
-            if (currentDistance >= distance || Vector2.Dot(hit2D.normal, direction) > 0)
+            if (currentDistance >= distance || Vector2.Dot(hit2d.normal, direction) > 0)
                 continue;
 
+            if (hit2d.transform.TryGetComponent(out PlatformEffector2D platform))
+            {
+                // if (hit2d.distance == 0 || collider2D.IsTouching(hit2d.collider))
+                if (hit2d.distance == 0)
+                    continue;
+                
+                var platformNormal = Vector2.up.RotateBy(platform.rotationalOffset);
+                float angleDif = Vector2.Angle(-direction, platformNormal);
+                
+                if (angleDif > platform.surfaceArc / 2)
+                    continue;
+            }
+
             distance = currentDistance;
-            normal = hit2D.normal;
-            layer = hit2D.transform.gameObject.layer;
+            normal = hit2d.normal;
+            layer = hit2d.transform.gameObject.layer;
         }
 
         return (normal, distance, layer);

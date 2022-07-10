@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class AnimationEventDispatcher : MonoBehaviour
 {
+    private static readonly int IsRunning = Animator.StringToHash("IsRunning");
     private static readonly int IsMoving = Animator.StringToHash("IsMoving");
     private static readonly int OnGround = Animator.StringToHash("OnGround");
 
@@ -12,19 +13,17 @@ public class AnimationEventDispatcher : MonoBehaviour
 
     public void UpdateHorizontalVelocity(float force)
     {
-        if (Math.Abs(force) > .02f)
-        {
-            _animator.SetBool(IsMoving, true);
+        if (force < -changeDirectionValue)
+            _spriteRenderer.flipX = true;
+        else if (force > changeDirectionValue)
+            _spriteRenderer.flipX = false;
 
-            if (force < -changeDirectionValue)
-                _spriteRenderer.flipX = true;
-            else if (force > changeDirectionValue)
-                _spriteRenderer.flipX = false;
-        }
-        else
-        {
-            _animator.SetBool(IsMoving, false);
-        }
+        float absForce = Math.Abs(force);
+        var animationAddSpeed = Mathf.Max(0, absForce > .5f ? absForce : absForce * 4);
+        _animator.speed = 1 + animationAddSpeed;
+
+        _animator.SetBool(IsMoving, absForce > .01f);
+        _animator.SetBool(IsRunning, absForce > .5f);
     }
 
     public void UpdateGrounded(bool grounded) => _animator.SetBool(OnGround, grounded);
