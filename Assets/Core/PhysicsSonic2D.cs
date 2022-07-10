@@ -139,7 +139,7 @@ public class PhysicsSonic2D : MonoBehaviour
         if (maxRecursion <= 0 || normal == Vector2.zero || _slopeNormal != _groundNormal)
             return;
 
-        if (validateNextGroundNormal(normal))
+        if (!validateNextGroundNormal(normal))
             _velocity.x = 0f;
         else
             ChangePosition(CalculateMoveAlong(normal) * ((deltaMagnitude - tail) * Math.Sign(_velocity.x)),
