@@ -21,7 +21,7 @@ public class PhysicsSonic2D : MonoBehaviour
     private const float _moveScale = 8f;
     private const float _maxHorizontalSpeed = 40f;
     private const float _maxVerticalSpeed = 40f;
-    private const float _stickySpeed = _maxHorizontalSpeed / 4f;
+    private const float _stickySpeed = _maxHorizontalSpeed / 2f;
     private float _groundOffset = .01f;
     private const float _maxNormalAngleDifference = 50f;
     private const float _accelerationTime = .001f;
@@ -214,14 +214,14 @@ public class PhysicsSonic2D : MonoBehaviour
 
             _contactFilter.SetLayerMask(Physics2D.GetLayerCollisionMask(layer));
             gameObject.layer = layer;
-            // _velocity.y = Physics2D.gravity.y * Time.deltaTime;
-            // _velocity.y *= _velocity.x > _stickySpeed ? 2 : 1;
-            _velocity.y = -2;
+            _velocity.y = Physics2D.gravity.y * Time.deltaTime;
+            _velocity.y *= Mathf.Abs(_velocity.x) > _stickySpeed ? 2 : 1;
             return;
         }
 
         _groundHitDistance = Math.Abs(force);
         _slopeNormal = normal;
+        // ChangeVelocityByNormal(normal.y < 0 ? -normal : normal);
     }
 
     private void ChangeVelocityByNormal(Vector2 normal) => _velocity = (_velocity + _velocity.ReflectBy(normal)) / 2;
