@@ -1,10 +1,9 @@
-﻿using System;
-using Lib;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ParallaxBackground : MonoBehaviour
 {
     [SerializeField] private Vector2 parallaxEffectMultiplier;
+    [SerializeField] private Vector2 force;
     [SerializeField] private bool infiniteHorizontal;
     [SerializeField] private bool infiniteVertical;
 
@@ -12,6 +11,7 @@ public class ParallaxBackground : MonoBehaviour
     private Vector3 startCameraPosition;
     private Vector3 startDifference;
     private Vector3 startPosition;
+    private Vector2 forcePosition;
     private float textureUnitSizeX;
     private float textureUnitSizeY;
 
@@ -31,29 +31,31 @@ public class ParallaxBackground : MonoBehaviour
 
     private void LateUpdate()
     {
+        forcePosition += force * Time.deltaTime;
+        forcePosition.x %= textureUnitSizeX;
+        forcePosition.y %= textureUnitSizeY;
+        
         var deltaMovement = cameraTransform.position - startCameraPosition;
-        var multiplierMovement = deltaMovement * parallaxEffectMultiplier;
+        var offset = deltaMovement * parallaxEffectMultiplier + forcePosition;
 
-        var softOffset = (Vector3) multiplierMovement;
-
-        var hardOffsetX = 0f;
-        var hardOffsetY = 0f;
+        var infiniteOffsetX = 0f;
+        var infiniteOffsetY = 0f;
 
         if (infiniteHorizontal)
         {
-            hardOffsetX = (int) (deltaMovement.x / textureUnitSizeX) * textureUnitSizeX;
-            softOffset.x %= textureUnitSizeX;
+            infiniteOffsetX = (int) (deltaMovement.x / textureUnitSizeX) * textureUnitSizeX;
+            offset.x %= textureUnitSizeX;
         }
 
         if (infiniteVertical)
         {
-            hardOffsetY = (int) (deltaMovement.y / textureUnitSizeY) * textureUnitSizeY;
-            softOffset.y %= textureUnitSizeY;
+            infiniteOffsetY = (int) (deltaMovement.y / textureUnitSizeY) * textureUnitSizeY;
+            offset.y %= textureUnitSizeY;
         }
 
         transform.position = new Vector3(
-            startPosition.x + hardOffsetX + softOffset.x,
-            startPosition.y + hardOffsetY + softOffset.y,
+            startPosition.x + infiniteOffsetX + offset.x,
+            startPosition.y + infiniteOffsetY + offset.y,
             transform.position.z
         );
     }

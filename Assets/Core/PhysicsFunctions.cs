@@ -27,14 +27,15 @@ public class PhysicsFunctions
 
             if (hit2d.transform.TryGetComponent(out PlatformEffector2D platform))
             {
-                // if (hit2d.distance == 0 || collider2D.IsTouching(hit2d.collider))
                 if (hit2d.distance == 0)
                     continue;
-                
+
                 var platformNormal = Vector2.up.RotateBy(platform.rotationalOffset);
                 float angleDif = Vector2.Angle(-direction, platformNormal);
-                
-                if (angleDif > platform.surfaceArc / 2)
+                float hitDif = Vector2.Angle(hit2d.normal, platformNormal);
+                float halfSurfaceArc = platform.surfaceArc / 2;
+
+                if (angleDif > halfSurfaceArc || hitDif > halfSurfaceArc)
                     continue;
             }
 

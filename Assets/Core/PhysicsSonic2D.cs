@@ -77,15 +77,12 @@ public class PhysicsSonic2D : MonoBehaviour
         if (_grounded && _targetVelocity.y > 0)
             _velocity.y += _targetVelocity.y * _jumpScale;
 
-        _targetVelocity = Vector2.zero;
-
         _velocity.x = Math.Clamp(_velocity.x, -_maxHorizontalSpeed, _maxHorizontalSpeed);
         _velocity.y = Math.Clamp(_velocity.y, -_maxVerticalSpeed, _maxVerticalSpeed);
+        _targetVelocity = Vector2.zero;
+        _rigidbody.velocity = Vector2.zero;
 
         var deltaPosition = _velocity * Time.deltaTime;
-        var move = CalculateMoveAlong(_groundNormal) * deltaPosition.x;
-
-        _rigidbody.velocity = Vector2.zero;
 
         if (_grounded && _velocity.y < 0)
             UpdateGroundNormal(-deltaPosition.magnitude - _groundOffset);
@@ -93,6 +90,8 @@ public class PhysicsSonic2D : MonoBehaviour
             UpdateGroundNormal(deltaPosition.y + Mathf.Sign(deltaPosition.y) * _groundOffset);
 
         ChangePositionByGravity();
+
+        var move = CalculateMoveAlong(_groundNormal) * deltaPosition.x;
         ChangePosition(move);
 
         _setHorizontalForce.Invoke(_velocity.x / _maxHorizontalSpeed);
@@ -165,8 +164,8 @@ public class PhysicsSonic2D : MonoBehaviour
         var (normal, distance, layer) =
             _functions.FindNearestNormal(_groundNormal * dir, castDistance, _bodyCollider, _contactFilter);
 
-        var leftNormalIsValid = validateNextGroundNormal(leftNormal, 1);
-        var rightNormalIsValid = validateNextGroundNormal(rightNormal, 1);
+        var leftNormalIsValid = validateNextGroundNormal(leftNormal, 10);
+        var rightNormalIsValid = validateNextGroundNormal(rightNormal, 10);
 
         if (leftNormalIsValid && !rightNormalIsValid)
         {
@@ -180,7 +179,7 @@ public class PhysicsSonic2D : MonoBehaviour
         }
         else
         {
-            UpdateGroundNormal(force: verticalForce, normal: normal, distance: distance, layer: layer);
+            UpdateGroundNormal(force: verticalForce, normal: v, distance: distance, layer: layer);
 
             if (_grounded || normal == Vector2.zero)
                 return;
@@ -216,6 +215,7 @@ public class PhysicsSonic2D : MonoBehaviour
             gameObject.layer = layer;
             _velocity.y = Physics2D.gravity.y * Time.deltaTime;
             _velocity.y *= Mathf.Abs(_velocity.x) > _stickySpeed ? 2 : 1;
+            // _velocity.y = -2;
             return;
         }
 
