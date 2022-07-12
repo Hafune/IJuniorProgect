@@ -179,7 +179,7 @@ public class PhysicsSonic2D : MonoBehaviour
         }
         else
         {
-            UpdateGroundNormal(force: verticalForce, normal: v, distance: distance, layer: layer);
+            UpdateGroundNormal(force: verticalForce, normal: normal, distance: distance, layer: layer);
 
             if (_grounded || normal == Vector2.zero)
                 return;
