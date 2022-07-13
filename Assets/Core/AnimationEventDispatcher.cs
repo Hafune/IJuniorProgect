@@ -19,11 +19,11 @@ public class AnimationEventDispatcher : MonoBehaviour
             _spriteRenderer.flipX = false;
 
         float absForce = Math.Abs(force);
-        var animationAddSpeed = Mathf.Max(0, absForce > .5f ? absForce : absForce * 4);
+        var animationAddSpeed = Mathf.Max(0, absForce < .45f ? absForce * 4 : (absForce - .45f) * 8);
         _animator.speed = 1 + animationAddSpeed;
 
         _animator.SetBool(IsMoving, absForce > .01f);
-        _animator.SetBool(IsRunning, absForce > .5f);
+        _animator.SetBool(IsRunning, absForce > .45f);
     }
 
     public void UpdateGrounded(bool grounded) => _animator.SetBool(OnGround, grounded);

@@ -17,6 +17,10 @@ namespace Lib
             }
         }
 
+        public static int Sign(this int value) => Math.Sign(value);
+        
+        public static int Sign(this float value) => Math.Sign(value);
+
         public static void ForEachIndexed<T>(this List<T> list, Action<T, int> callback)
         {
             for (int i = 0; i < list.Count; i++)

@@ -23,11 +23,13 @@ MonoBehaviour:
     m_Order: 0
     m_Sprites:
     - {fileID: -682970524, guid: 6a5962dd0d2949744b0a4f9a5f541bf9, type: 3}
+    - {fileID: -537823890, guid: 6a5962dd0d2949744b0a4f9a5f541bf9, type: 3}
   - m_Start: -135
     m_End: -45
     m_Order: 0
     m_Sprites:
     - {fileID: -682970524, guid: 6a5962dd0d2949744b0a4f9a5f541bf9, type: 3}
+    - {fileID: -537823890, guid: 6a5962dd0d2949744b0a4f9a5f541bf9, type: 3}
   - m_Start: -225
     m_End: -135
     m_Order: 0
