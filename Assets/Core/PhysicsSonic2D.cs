@@ -18,8 +18,8 @@ public class PhysicsSonic2D : MonoBehaviour
     private const float _totalMaxHorizontalSpeed = 40f;
     private const float _maxVerticalSpeed = 40f;
     private const float _stickySpeed = _totalMaxHorizontalSpeed / 2f;
-    private const float _groundOffset = .01f;
-    private const float _maxNormalAngleDifference = 50f;
+    private const float _groundOffset = .02f;
+    private const float _maxNextNormalAngle = 50f;
     private const float _accelerationTime = .0005f;
     private float _groundFriction;
     private float _airFriction;
@@ -115,7 +115,7 @@ public class PhysicsSonic2D : MonoBehaviour
 
     private Vector2 CalculateMoveAlong(Vector2 normal) => new Vector2(normal.y, -normal.x);
 
-    private bool validateNextGroundNormal(Vector2 newNormal, float maxAngleDifference = _maxNormalAngleDifference) =>
+    private bool IsValidateNextGroundNormal(Vector2 newNormal, float maxAngleDifference = _maxNextNormalAngle) =>
         newNormal != Vector2.zero && Vector2.Angle(_groundNormal, newNormal) < maxAngleDifference;
 
     private void ChangeBodyVelocityByGravity()
@@ -153,7 +153,7 @@ public class PhysicsSonic2D : MonoBehaviour
         if (maxRecursion <= 0 || normal == Vector2.zero || _slopeNormal != _groundNormal)
             return;
 
-        if (!validateNextGroundNormal(normal))
+        if (!IsValidateNextGroundNormal(normal))
             ChangeVelocityByNormal(normal);
         else
             ChangeBodyVelocity(CalculateMoveAlong(normal) * ((deltaMagnitude - tail) * _velocity.x.Sign()),
@@ -162,44 +162,36 @@ public class PhysicsSonic2D : MonoBehaviour
 
     private void UpdateGroundNormal(float verticalForce)
     {
-        _lastGrounded = _grounded;
-        _grounded = false;
-        _leftLeg.isTrigger = true;
-        _rightLeg.isTrigger = true;
-
         int dir = verticalForce.Sign() == 0 ? -1 : verticalForce.Sign();
         float castDistance = Math.Abs(verticalForce);
 
-        var (leftNormal, lDistance, leftLayer) =
+        var (leftNormal, leftDistance, leftLayer) =
             _functions.FindNearestNormal(_groundNormal * dir, castDistance, _leftLeg, _contactFilter);
 
-        var (rightNormal, rDistance, rightLayer) =
+        var (rightNormal, rightDistance, rightLayer) =
             _functions.FindNearestNormal(_groundNormal * dir, castDistance, _rightLeg, _contactFilter);
 
         var (normal, distance, layer) =
             _functions.FindNearestNormal(_groundNormal * dir, castDistance, _bodyCollider, _contactFilter);
 
-        var leftNormalIsValid = validateNextGroundNormal(leftNormal, 10);
-        var rightNormalIsValid = validateNextGroundNormal(rightNormal, 10);
+        bool centerNormalIsValid = normal != Vector2.zero;
+        var leftNormalIsValid =
+            IsValidateNextGroundNormal(leftNormal, centerNormalIsValid && leftDistance > 0 ? _maxNextNormalAngle : 1);
+        var rightNormalIsValid =
+            IsValidateNextGroundNormal(rightNormal, centerNormalIsValid && rightDistance > 0 ? _maxNextNormalAngle : 1);
 
         if (leftNormalIsValid && !rightNormalIsValid)
-        {
-            _leftLeg.isTrigger = false;
-            UpdateGroundNormal(force: verticalForce, normal: leftNormal, distance: lDistance, layer: leftLayer);
-        }
+            UpdateGroundNormal(force: verticalForce, normal: leftNormal, distance: leftDistance, layer: leftLayer);
         else if (rightNormalIsValid && !leftNormalIsValid)
-        {
-            _rightLeg.isTrigger = false;
-            UpdateGroundNormal(force: verticalForce, normal: rightNormal, distance: rDistance, layer: rightLayer);
-        }
+            UpdateGroundNormal(force: verticalForce, normal: rightNormal, distance: rightDistance, layer: rightLayer);
         else
-        {
             UpdateGroundNormal(force: verticalForce, normal: normal, distance: distance, layer: layer);
-        }
     }
 
     private void UpdateGroundNormal(Vector2 normal, float distance, float force, int layer)
     {
+        _lastGrounded = _grounded;
+        _grounded = false;
         _groundHitDistance = distance;
 
         if (normal == Vector2.zero)
@@ -215,7 +207,7 @@ public class PhysicsSonic2D : MonoBehaviour
             return;
         }
 
-        if (validateNextGroundNormal(normal))
+        if (IsValidateNextGroundNormal(normal))
         {
             _groundNormal = normal;
             _slopeNormal = _groundNormal;

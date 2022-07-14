@@ -44,7 +44,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -127,317 +127,6 @@ TextureImporter:
   spriteSheet:
     serializedVersion: 2
     sprites:
-    - serializedVersion: 2
-      name: Background2_0
-      rect:
-        serializedVersion: 2
-        x: 24
-        y: 843
-        width: 512
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 133d5cc5da18c1640a168e9d8518a1a6
-      internalID: -762385496
-      vertices:
-      - {x: 400.00702, y: 0.0009994507}
-      - {x: 454.675, y: 0.0009994507}
-      - {x: 509.343, y: 0.0049972534}
-      - {x: 512, y: 0.012001038}
-      - {x: 512, y: 106.68}
-      - {x: 512, y: 161.345}
-      - {x: 512, y: 216.013}
-      - {x: 512, y: 256}
-      - {x: 457.332, y: 256}
-      - {x: 402.664, y: 256}
-      - {x: 347.997, y: 256}
-      - {x: 293.33002, y: 256}
-      - {x: 238.664, y: 256}
-      - {x: 183.99701, y: 256}
-      - {x: 129.33, y: 256}
-      - {x: 74.660995, y: 256}
-      - {x: 19.994995, y: 256}
-      - {x: 0, y: 256}
-      - {x: 0.0019989014, y: 201.332}
-      - {x: 0.0019989014, y: 146.66501}
-      - {x: 0.009994507, y: 91.999}
-      - {x: 0.08299255, y: 37.332}
-      - {x: 0.33799744, y: 0}
-      - {x: 72.006, y: 0}
-      - {x: 126.672, y: 0}
-      - {x: 181.34, y: 0}
-      - {x: 236.007, y: 0}
-      - {x: 290.673, y: 0}
-      - {x: 345.341, y: 0}
-      indices: 000000000400000001000000000000000900000004000000000000000a00000009000000000000001c0000000a0000000100000004000000020000000200000004000000030000000400000009000000050000000500000008000000060000000500000009000000080000000600000008000000070000000a0000001c0000000b0000000b0000001b0000000c0000000b0000001c0000001b0000000c0000001a0000000d0000000c0000001b0000001a0000000d000000190000000e0000000d0000001a000000190000000e000000130000000f0000000e00000018000000130000000e00000019000000180000000f00000012000000100000000f0000001300000012000000100000001200000011000000130000001800000014000000140000001700000015000000140000001800000017000000150000001700000016000000
-      edges:
-      - {x: 0, y: 1}
-      - {x: 0, y: 28}
-      - {x: 1, y: 2}
-      - {x: 2, y: 3}
-      - {x: 3, y: 4}
-      - {x: 4, y: 5}
-      - {x: 5, y: 6}
-      - {x: 6, y: 7}
-      - {x: 7, y: 8}
-      - {x: 8, y: 9}
-      - {x: 9, y: 10}
-      - {x: 10, y: 11}
-      - {x: 11, y: 12}
-      - {x: 12, y: 13}
-      - {x: 13, y: 14}
-      - {x: 14, y: 15}
-      - {x: 15, y: 16}
-      - {x: 16, y: 17}
-      - {x: 17, y: 18}
-      - {x: 18, y: 19}
-      - {x: 19, y: 20}
-      - {x: 20, y: 21}
-      - {x: 21, y: 22}
-      - {x: 22, y: 23}
-      - {x: 23, y: 24}
-      - {x: 24, y: 25}
-      - {x: 25, y: 26}
-      - {x: 26, y: 27}
-      - {x: 27, y: 28}
-      weights:
-      - weight[0]: 0
-        weight[1]: 0
-        weight[2]: 0
-        weight[3]: 0
-        boneIndex[0]: 0
-        boneIndex[1]: 0
-        boneIndex[2]: 0
-        boneIndex[3]: 0
-      - weight[0]: 0
-        weight[1]: 0
-        weight[2]: 0
-        weight[3]: 0
-        boneIndex[0]: 0
-        boneIndex[1]: 0
-        boneIndex[2]: 0
-        boneIndex[3]: 0
-      - weight[0]: 0
-        weight[1]: 0
-        weight[2]: 0
-        weight[3]: 0
-        boneIndex[0]: 0
-        boneIndex[1]: 0
-        boneIndex[2]: 0
-        boneIndex[3]: 0
-      - weight[0]: 0
-        weight[1]: 0
-        weight[2]: 0
-        weight[3]: 0
-        boneIndex[0]: 0
-        boneIndex[1]: 0
-        boneIndex[2]: 0
-        boneIndex[3]: 0
-      - weight[0]: 0
-        weight[1]: 0
-        weight[2]: 0
-        weight[3]: 0
-        boneIndex[0]: 0
-        boneIndex[1]: 0
-        boneIndex[2]: 0
-        boneIndex[3]: 0
-      - weight[0]: 0
-        weight[1]: 0
-        weight[2]: 0
-        weight[3]: 0
-        boneIndex[0]: 0
-        boneIndex[1]: 0
-        boneIndex[2]: 0
-        boneIndex[3]: 0
-      - weight[0]: 0
-        weight[1]: 0
-        weight[2]: 0
-        weight[3]: 0
-        boneIndex[0]: 0
-        boneIndex[1]: 0
-        boneIndex[2]: 0
-        boneIndex[3]: 0
-      - weight[0]: 0
-        weight[1]: 0
-        weight[2]: 0
-        weight[3]: 0
-        boneIndex[0]: 0
-        boneIndex[1]: 0
-        boneIndex[2]: 0
-        boneIndex[3]: 0
-      - weight[0]: 0
-        weight[1]: 0
-        weight[2]: 0
-        weight[3]: 0
-        boneIndex[0]: 0
-        boneIndex[1]: 0
-        boneIndex[2]: 0
-        boneIndex[3]: 0
-      - weight[0]: 0
-        weight[1]: 0
-        weight[2]: 0
-        weight[3]: 0
-        boneIndex[0]: 0
-        boneIndex[1]: 0
-        boneIndex[2]: 0
-        boneIndex[3]: 0
-      - weight[0]: 0
-        weight[1]: 0
-        weight[2]: 0
-        weight[3]: 0
-        boneIndex[0]: 0
-        boneIndex[1]: 0
-        boneIndex[2]: 0
-        boneIndex[3]: 0
-      - weight[0]: 0
-        weight[1]: 0
-        weight[2]: 0
-        weight[3]: 0
-        boneIndex[0]: 0
-        boneIndex[1]: 0
-        boneIndex[2]: 0
-        boneIndex[3]: 0
-      - weight[0]: 0
-        weight[1]: 0
-        weight[2]: 0
-        weight[3]: 0
-        boneIndex[0]: 0
-        boneIndex[1]: 0
-        boneIndex[2]: 0
-        boneIndex[3]: 0
-      - weight[0]: 0
-        weight[1]: 0
-        weight[2]: 0
-        weight[3]: 0
-        boneIndex[0]: 0
-        boneIndex[1]: 0
-        boneIndex[2]: 0
-        boneIndex[3]: 0
-      - weight[0]: 0
-        weight[1]: 0
-        weight[2]: 0
-        weight[3]: 0
-        boneIndex[0]: 0
-        boneIndex[1]: 0
-        boneIndex[2]: 0
-        boneIndex[3]: 0
-      - weight[0]: 0
-        weight[1]: 0
-        weight[2]: 0
-        weight[3]: 0
-        boneIndex[0]: 0
-        boneIndex[1]: 0
-        boneIndex[2]: 0
-        boneIndex[3]: 0
-      - weight[0]: 0
-        weight[1]: 0
-        weight[2]: 0
-        weight[3]: 0
-        boneIndex[0]: 0
-        boneIndex[1]: 0
-        boneIndex[2]: 0
-        boneIndex[3]: 0
-      - weight[0]: 0
-        weight[1]: 0
-        weight[2]: 0
-        weight[3]: 0
-        boneIndex[0]: 0
-        boneIndex[1]: 0
-        boneIndex[2]: 0
-        boneIndex[3]: 0
-      - weight[0]: 0
-        weight[1]: 0
-        weight[2]: 0
-        weight[3]: 0
-        boneIndex[0]: 0
-        boneIndex[1]: 0
-        boneIndex[2]: 0
-        boneIndex[3]: 0
-      - weight[0]: 0
-        weight[1]: 0
-        weight[2]: 0
-        weight[3]: 0
-        boneIndex[0]: 0
-        boneIndex[1]: 0
-        boneIndex[2]: 0
-        boneIndex[3]: 0
-      - weight[0]: 0
-        weight[1]: 0
-        weight[2]: 0
-        weight[3]: 0
-        boneIndex[0]: 0
-        boneIndex[1]: 0
-        boneIndex[2]: 0
-        boneIndex[3]: 0
-      - weight[0]: 0
-        weight[1]: 0
-        weight[2]: 0
-        weight[3]: 0
-        boneIndex[0]: 0
-        boneIndex[1]: 0
-        boneIndex[2]: 0
-        boneIndex[3]: 0
-      - weight[0]: 0
-        weight[1]: 0
-        weight[2]: 0
-        weight[3]: 0
-        boneIndex[0]: 0
-        boneIndex[1]: 0
-        boneIndex[2]: 0
-        boneIndex[3]: 0
-      - weight[0]: 0
-        weight[1]: 0
-        weight[2]: 0
-        weight[3]: 0
-        boneIndex[0]: 0
-        boneIndex[1]: 0
-        boneIndex[2]: 0
-        boneIndex[3]: 0
-      - weight[0]: 0
-        weight[1]: 0
-        weight[2]: 0
-        weight[3]: 0
-        boneIndex[0]: 0
-        boneIndex[1]: 0
-        boneIndex[2]: 0
-        boneIndex[3]: 0
-      - weight[0]: 0
-        weight[1]: 0
-        weight[2]: 0
-        weight[3]: 0
-        boneIndex[0]: 0
-        boneIndex[1]: 0
-        boneIndex[2]: 0
-        boneIndex[3]: 0
-      - weight[0]: 0
-        weight[1]: 0
-        weight[2]: 0
-        weight[3]: 0
-        boneIndex[0]: 0
-        boneIndex[1]: 0
-        boneIndex[2]: 0
-        boneIndex[3]: 0
-      - weight[0]: 0
-        weight[1]: 0
-        weight[2]: 0
-        weight[3]: 0
-        boneIndex[0]: 0
-        boneIndex[1]: 0
-        boneIndex[2]: 0
-        boneIndex[3]: 0
-      - weight[0]: 0
-        weight[1]: 0
-        weight[2]: 0
-        weight[3]: 0
-        boneIndex[0]: 0
-        boneIndex[1]: 0
-        boneIndex[2]: 0
-        boneIndex[3]: 0
     - serializedVersion: 2
       name: Background2_1
       rect:
@@ -8048,10 +7737,10 @@ TextureImporter:
       name: Background2_28
       rect:
         serializedVersion: 2
-        x: 24
-        y: 699
-        width: 128
-        height: 128
+        x: 168
+        y: 667
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -8389,10 +8078,10 @@ TextureImporter:
       name: Background2_29
       rect:
         serializedVersion: 2
-        x: 168
+        x: 200
         y: 667
-        width: 128
-        height: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -8690,10 +8379,10 @@ TextureImporter:
       name: Background2_30
       rect:
         serializedVersion: 2
-        x: 298
+        x: 232
         y: 667
-        width: 128
-        height: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -8991,10 +8680,10 @@ TextureImporter:
       name: Background2_31
       rect:
         serializedVersion: 2
-        x: 442
+        x: 264
         y: 667
-        width: 160
-        height: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -9282,10 +8971,10 @@ TextureImporter:
       name: Background2_32
       rect:
         serializedVersion: 2
-        x: 604
-        y: 667
-        width: 160
-        height: 96
+        x: 168
+        y: 699
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -9573,10 +9262,10 @@ TextureImporter:
       name: Background2_33
       rect:
         serializedVersion: 2
-        x: 780
-        y: 667
-        width: 128
-        height: 128
+        x: 200
+        y: 699
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -9884,10 +9573,10 @@ TextureImporter:
       name: Background2_34
       rect:
         serializedVersion: 2
-        x: 910
-        y: 667
-        width: 128
-        height: 128
+        x: 232
+        y: 699
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -10195,10 +9884,10 @@ TextureImporter:
       name: Background2_35
       rect:
         serializedVersion: 2
-        x: 24
-        y: 569
-        width: 128
-        height: 128
+        x: 264
+        y: 699
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -10536,10 +10225,10 @@ TextureImporter:
       name: Background2_36
       rect:
         serializedVersion: 2
-        x: 202
-        y: 439
-        width: 128
-        height: 150
+        x: 168
+        y: 731
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -10847,10 +10536,10 @@ TextureImporter:
       name: Background2_37
       rect:
         serializedVersion: 2
-        x: 332
-        y: 439
-        width: 128
-        height: 150
+        x: 200
+        y: 731
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -11148,10 +10837,10 @@ TextureImporter:
       name: Background2_38
       rect:
         serializedVersion: 2
-        x: 24
-        y: 439
-        width: 128
-        height: 128
+        x: 168
+        y: 763
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -11489,10 +11178,10 @@ TextureImporter:
       name: Background2_39
       rect:
         serializedVersion: 2
-        x: 154
-        y: 439
+        x: 168
+        y: 795
         width: 32
-        height: 128
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -11770,10 +11459,10 @@ TextureImporter:
       name: Background2_40
       rect:
         serializedVersion: 2
-        x: 476
-        y: 439
-        width: 127
-        height: 127
+        x: 298
+        y: 667
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -12071,10 +11760,10 @@ TextureImporter:
       name: Background2_41
       rect:
         serializedVersion: 2
-        x: 605
-        y: 439
-        width: 127
-        height: 127
+        x: 298
+        y: 699
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -12382,10 +12071,10 @@ TextureImporter:
       name: Background2_42
       rect:
         serializedVersion: 2
-        x: 748
-        y: 439
-        width: 128
-        height: 128
+        x: 330
+        y: 699
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -12723,10 +12412,10 @@ TextureImporter:
       name: Background2_43
       rect:
         serializedVersion: 2
-        x: 892
-        y: 439
-        width: 128
-        height: 128
+        x: 330
+        y: 667
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -13064,10 +12753,10 @@ TextureImporter:
       name: Background2_44
       rect:
         serializedVersion: 2
-        x: 24
-        y: 167
-        width: 128
-        height: 192
+        x: 362
+        y: 699
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -13425,10 +13114,10 @@ TextureImporter:
       name: Background2_45
       rect:
         serializedVersion: 2
-        x: 168
-        y: 167
-        width: 128
-        height: 224
+        x: 362
+        y: 667
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -13786,10 +13475,10 @@ TextureImporter:
       name: Background2_46
       rect:
         serializedVersion: 2
-        x: 312
-        y: 167
-        width: 128
-        height: 128
+        x: 394
+        y: 667
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -14097,10 +13786,10 @@ TextureImporter:
       name: Background2_47
       rect:
         serializedVersion: 2
-        x: 456
-        y: 167
-        width: 128
-        height: 128
+        x: 394
+        y: 699
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -14418,10 +14107,10 @@ TextureImporter:
       name: Background2_48
       rect:
         serializedVersion: 2
-        x: 600
-        y: 167
-        width: 192
-        height: 128
+        x: 362
+        y: 731
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -14729,10 +14418,10 @@ TextureImporter:
       name: Background2_49
       rect:
         serializedVersion: 2
-        x: 808
-        y: 167
-        width: 128
-        height: 128
+        x: 394
+        y: 731
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -15040,10 +14729,10 @@ TextureImporter:
       name: Background2_50
       rect:
         serializedVersion: 2
-        x: 952
-        y: 167
-        width: 105
-        height: 128
+        x: 394
+        y: 763
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -15638,6 +15327,1245 @@ TextureImporter:
         boneIndex[1]: 0
         boneIndex[2]: 0
         boneIndex[3]: 0
+    - serializedVersion: 2
+      name: Background2_52
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 795
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a130ad0943361144d946297792f35e47
+      internalID: 1587545278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_53
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 667
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5777fb5af288bef4bb3ba48a53caadae
+      internalID: -34213908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_54
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 667
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0182ee737134e94499f284aeb3af19c
+      internalID: -228558549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_55
+      rect:
+        serializedVersion: 2
+        x: 506
+        y: 667
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c98211bbf625714fba95fb505c44494
+      internalID: 1774923779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_56
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 667
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 927474a819e329a4e9d76fb212b2ec5d
+      internalID: -244127357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_57
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 699
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8155b8680c1e774998a38060ecdc088
+      internalID: 1091982489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_58
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 699
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a14a3e1d56007494c88bfaa047c3211e
+      internalID: -1848982033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_59
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 731
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd30f95887e459e409ade9c2bf947874
+      internalID: -590680257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_60
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 731
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84152369cb8be4a46b9ecd1bf7ee1ce2
+      internalID: 812406901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_61
+      rect:
+        serializedVersion: 2
+        x: 506
+        y: 699
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d74e05db8f4df3e46a4232731f05736f
+      internalID: -1045251202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_62
+      rect:
+        serializedVersion: 2
+        x: 506
+        y: 731
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74400c6f603ab5f4da7f1f1aff365601
+      internalID: 980229051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_63
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 699
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 638e68d998d674041bb9e4d5213229e5
+      internalID: -1019508576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_64
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 667
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4abf4e4b2cb65340998fc3460b2a6ea
+      internalID: -1327697005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_65
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 699
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50a2dc3e39a637b4b9ca13d00d359a7f
+      internalID: 256837549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_66
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 667
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a8add541ec697746afb0fa76793d703
+      internalID: -1411244775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_67
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 699
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04cf0445157850c46b0722e70615b5d5
+      internalID: -431470833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_68
+      rect:
+        serializedVersion: 2
+        x: 636
+        y: 667
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00bc33410b7beb549b4b815d039180ee
+      internalID: -1064811515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_69
+      rect:
+        serializedVersion: 2
+        x: 636
+        y: 699
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cf16c289e24eaa47a3503f16792c365
+      internalID: 2000607189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_70
+      rect:
+        serializedVersion: 2
+        x: 668
+        y: 667
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35a239ccb58a8234882e11625f2449aa
+      internalID: 272997905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_71
+      rect:
+        serializedVersion: 2
+        x: 668
+        y: 699
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bffa8d68ff24dc4faa38771737471f0
+      internalID: -1038324625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_72
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 667
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1461a2e0467d3841ae09f9c1b822bd7
+      internalID: -1142932539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_73
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 699
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71d782ecc91eb0747bc025eb7a066b92
+      internalID: -544309141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_74
+      rect:
+        serializedVersion: 2
+        x: 668
+        y: 731
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1084dcd0245f3b145a1096980f0887f7
+      internalID: 1575058846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_75
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 731
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbef7511e9d99bd4f9b4fafe3185844c
+      internalID: -1725161118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_76
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 731
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdde339bc64dfd7419d9aff1b618798f
+      internalID: -754721418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_77
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 699
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41ab3203b7d01c3449bd80cf67be39a3
+      internalID: 964519373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_78
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 667
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23fc4d561617ff848ae57d70070610da
+      internalID: 456372203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_79
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 430
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84f0b4731248b6e479045284b36ffe5e
+      internalID: 726728257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_83
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 462
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 433befc875dcd62418f8b4dde241b7b1
+      internalID: -1389690256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_84
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 462
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 181c4b51d1e8eb64a88a3a6d2e8d3c41
+      internalID: 2096662128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_85
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 462
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efe51d59f6404fa4987c0494fa0d113c
+      internalID: -76952989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_86
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 462
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02fe4b59aa5b4df40bf1db5843a73d8b
+      internalID: 1842458302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_87
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 494
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24578a44cf116784286cca47222e66af
+      internalID: 1652211934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_88
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 494
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1530422cb5b7d3d448a76d7a0d9a21c8
+      internalID: 746523602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_89
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 494
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7e63195be271964aa4d9f75574e0026
+      internalID: 1104665042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_90
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 494
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d559333cea32164bb98fad277ad2915
+      internalID: 20970553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_91
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 526
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 391dc0ca1d82e36449f26abbe065a056
+      internalID: 1702793276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_92
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 526
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78657256ac3f30343ae2cb6b9eef6558
+      internalID: -1899527281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_93
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 526
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14470ca6934fb394791899d957e031e3
+      internalID: -2015568478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_94
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 526
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05b4f3e8eda7ce14d89f5aa391ccb957
+      internalID: 1427917350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_95
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 558
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e444e5d7dfbbeff40b83e102ae1c8c41
+      internalID: -360522279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_96
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 558
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6adb6037f17ec7949a861e3c1b59e292
+      internalID: -565489611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_97
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 558
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebb505aee4009994190bdb24b5324a38
+      internalID: 1789239646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_98
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 558
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec86247e389cca6498fb17f2dcda79df
+      internalID: -1008165419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_99
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 526
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 333e019f32e0f014f8d4da7dc1dd1f8d
+      internalID: 614293171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_100
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 494
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bb52b54d248fff45b92690df36150eb
+      internalID: 1583621598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_101
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 462
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e52530a72999e8e46bb248274bf44fd3
+      internalID: -897683970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_104
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 462
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fab6566065ec5cd49b989493b0bb3cea
+      internalID: 1820170979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_105
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 494
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a010f7b038aacb4a95f3605e7c9ee66
+      internalID: 304444488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_106
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 526
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d01d60a53978b547861d5ec67d13dc8
+      internalID: 2147364466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_107
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 558
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bb3a9c87cb113a49943b661398928f9
+      internalID: -1033798682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_108
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 558
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21b4011a4d5e50c49b70289b3b3b0883
+      internalID: -1118996192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_109
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 526
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c78b96f1a5116040b838bc12baa2d84
+      internalID: 371886958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_110
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 494
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90c1646ec83e00848ac86b03c816940a
+      internalID: -1666006875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_111
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 462
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80437709cdc98344d9b4b86501c0aaeb
+      internalID: 678124277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_113
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 526
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a77b486b64085f34397909fb70c62956
+      internalID: 892188812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_114
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 494
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1736b0e034e4c9b4cb1bba8e7c2ec18e
+      internalID: -637970731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_115
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 462
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 830f71c34a3005648b1c42b4d204b5a1
+      internalID: 997358153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background2_116
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 430
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71b3790426a1649489dc91e2ae6c81c3
+      internalID: -199665373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -15649,58 +16577,123 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Background2_27: -1951600409
+      Background2_81: 456372203
+      Background2_92: 746523602
+      Background2_75: -1142932539
+      Background2_114: -1118996192
       Background2_11: 10343635
       Background2_21: -1626146085
       Background2_46: -1342980716
-      Background2_20: 804130789
-      Background2_43: -1302723560
-      Background2_7: -630917687
+      Background2_89: -76952989
+      Background2_87: -1389690256
       Background2_3: 1208412434
       Background2_34: 1697360094
-      Background2_9: -2100720028
-      Background2_2: 1585836100
-      Background2_33: -504794530
+      Background2_58: -1848982033
+      Background2_60: 812406901
       Background2_38: -436278802
-      Background2_13: -962330187
       Background2_32: -7367900
+      Background2_77: 1575058846
       Background2_24: -1523349785
       Background2_17: 1055672805
-      Background2_23: 1987556439
+      Background2_94: 20970553
+      Background2_90: 1842458302
       Background2_8: 908407178
-      Background2_36: -602536778
-      Background2_5: 1326677708
+      Background2_63: -1019508576
+      Background2_84: 2010376658
       Background2_19: -1247680942
+      Background2_66: -1411244775
+      Background2_71: 2000607189
       Background2_51: 1529755516
+      Background2_103: 614293171
       Background2_41: -125737289
       Background2_45: -205004387
-      Background2_49: 1104069066
-      Background2_30: -1889940573
+      Background2_56: -244127357
+      Background2_107: 1927343937
+      Background2_62: 980229051
       Background2_4: 1435428129
       Background2_29: 1575501330
-      Background2_28: -1260092166
+      Background2_113: -1033798682
       Background2_18: -1587306486
       Background2_47: -1581759214
-      Background2_15: -2012447061
+      Background2_67: -1218585520
+      Background2_52: 1587545278
+      Background2_79: -754721418
+      Background2_110: 1820170979
+      Background2_88: 2096662128
       Background2_22: 1837463395
-      Background2_25: -2064649450
       Background2_44: -1598728212
-      Background2_6: 1707079769
-      Background2_40: -1381206998
+      Background2_57: 1091982489
+      Background2_54: -228558549
+      Background2_59: -590680257
       Background2_37: -51612753
       Background2_14: -898082624
-      Background2_31: 1762011548
+      Background2_97: -2015568478
       Background2_0: -762385496
       Background2_39: 998887579
-      Background2_42: -69449637
+      Background2_102: -1008165419
       Background2_12: 1784421033
+      Background2_64: -1327697005
+      Background2_35: 52167604
+      Background2_68: -2116061955
+      Background2_48: 2108035391
+      Background2_115: 371886958
+      Background2_10: -297196217
+      Background2_53: -34213908
+      Background2_112: 2147364466
+      Background2_27: -1951600409
+      Background2_98: 1427917350
+      Background2_104: -720790167
+      Background2_20: 804130789
+      Background2_43: -1302723560
+      Background2_55: 1774923779
+      Background2_7: -630917687
+      Background2_61: -1045251202
+      Background2_9: -2100720028
+      Background2_100: -565489611
+      Background2_2: 1585836100
+      Background2_65: 256837549
+      Background2_33: -504794530
+      Background2_93: 1104665042
+      Background2_13: -962330187
+      Background2_105: 1583621598
+      Background2_73: 272997905
+      Background2_108: -1345184849
+      Background2_91: 1652211934
+      Background2_78: -1725161118
+      Background2_23: 1987556439
+      Background2_36: -602536778
+      Background2_5: 1326677708
+      Background2_69: -431470833
+      Background2_95: 1702793276
+      Background2_49: 1104069066
+      Background2_30: -1889940573
+      Background2_70: -1064811515
+      Background2_85: 1739435250
+      Background2_28: -1260092166
+      Background2_99: -360522279
+      Background2_72: 2014823789
+      Background2_116: -1666006875
+      Background2_15: -2012447061
+      Background2_106: -897683970
+      Background2_25: -2064649450
+      Background2_6: 1707079769
+      Background2_40: -1381206998
+      Background2_101: 1789239646
+      Background2_86: 1755301464
+      Background2_109: 1926791835
+      Background2_42: -69449637
+      Background2_31: 1762011548
+      Background2_74: -1038324625
       Background2_50: 367953738
+      Background2_83: -1357491221
+      Background2_82: 726728257
       Background2_16: 1456175501
       Background2_26: 308542901
-      Background2_35: 52167604
-      Background2_48: 2108035391
+      Background2_96: -1899527281
+      Background2_76: -544309141
+      Background2_111: 304444488
       Background2_1: 1639744302
-      Background2_10: -297196217
+      Background2_80: 964519373
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
