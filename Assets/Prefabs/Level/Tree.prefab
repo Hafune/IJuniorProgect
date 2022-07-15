@@ -203,6 +203,7 @@ GameObject:
   - component: {fileID: 2391471986384044905}
   - component: {fileID: 7433781896310682101}
   - component: {fileID: 3689767923798350550}
+  - component: {fileID: -3641923793456567820}
   m_Layer: 0
   m_Name: Tree
   m_TagString: Untagged
@@ -326,6 +327,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-3641923793456567820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8090376780169076609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6f1b265fec14735ace547323a570862, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8622292281520608168
 GameObject:
   m_ObjectHideFlags: 0

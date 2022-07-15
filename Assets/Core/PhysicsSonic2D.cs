@@ -38,6 +38,9 @@ public class PhysicsSonic2D : MonoBehaviour
 
     public void SetForce(Vector2 force) => _targetVelocity = force;
 
+    public void SetVelocity(Vector2 velocity) =>
+        _velocity = velocity.RotatedBy(Vector2.SignedAngle(_groundNormal, Vector2.up));
+
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -181,7 +184,7 @@ public class PhysicsSonic2D : MonoBehaviour
             IsValidNextGroundNormal(leftNormal, centerNormalIsValid && leftDistance > 0 ? _maxNextNormalAngle : 1);
         var rightNormalIsValid =
             IsValidNextGroundNormal(rightNormal, centerNormalIsValid && rightDistance > 0 ? _maxNextNormalAngle : 1);
-        
+
         if (leftNormalIsValid && !rightNormalIsValid)
             UpdateGroundNormal(force: verticalForce, normal: leftNormal, distance: leftDistance, layer: leftLayer);
         else if (rightNormalIsValid && !leftNormalIsValid)
@@ -201,7 +204,7 @@ public class PhysicsSonic2D : MonoBehaviour
             if (_lastGrounded)
             {
                 _groundHitDistance = 0;
-                _velocity = _velocity.RotateBy(Vector2.SignedAngle(Vector2.up, _slopeNormal));
+                _velocity = _velocity.RotatedBy(Vector2.SignedAngle(Vector2.up, _slopeNormal));
             }
 
             _groundNormal = Vector2.up;

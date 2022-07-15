@@ -1,0 +1,611 @@
+fileFormatVersion: 2
+guid: b3cd5f4b86d01d549810a60975c550e7
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Custom Edited - Sonic the Hedgehog Customs - Objects_14
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 119
+        width: 32
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70bffa43d29f6ef47936008a993a7380
+      internalID: -2029470516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Sonic the Hedgehog Customs - Objects_15
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 119
+        width: 32
+        height: 14
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99a60cde43c613241bd94a330772fd24
+      internalID: -1238110356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Sonic the Hedgehog Customs - Objects_16
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 119
+        width: 32
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3716dcd8a98bf4409688c87ee0a4dd8
+      internalID: 963359463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Sonic the Hedgehog Customs - Objects_21
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9357568d4646ef34f90e57882ec7aa61
+      internalID: 1516159240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Sonic the Hedgehog Customs - Objects_22
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 96
+        width: 32
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd4d4b7d403bd05489b5d66df6ce19c9
+      internalID: 1311878132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Sonic the Hedgehog Customs - Objects_23
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 96
+        width: 32
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07730ad8669eb894e9f30bb1890bb752
+      internalID: 1830567640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Sonic the Hedgehog Customs - Objects_24
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 96
+        width: 32
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec090ff3f4e61bd48be53e8459935ccc
+      internalID: -515568596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Sonic the Hedgehog Customs - Objects_35
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 77
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f5fa93cd257f1e4e855f987bf79c983
+      internalID: 209334357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Sonic the Hedgehog Customs - Objects_36
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 70
+        width: 32
+        height: 22
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49db3baddd8d20648ab4f538920587d5
+      internalID: -2071039136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Sonic the Hedgehog Customs - Objects_37
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 70
+        width: 32
+        height: 22
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c3925682966fe0479571fc90540b59e
+      internalID: 178797226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Sonic the Hedgehog Customs - Objects_38
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 70
+        width: 32
+        height: 22
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 355cd6634bb4358448eca694d07f7056
+      internalID: -811898550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Sonic the Hedgehog Customs - Objects_48
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 58
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0918806adcb59f3489364f4cff0a46bd
+      internalID: 635286802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Sonic the Hedgehog Customs - Objects_59
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 39
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 064179821a94a7b438635657a682ad79
+      internalID: -773624932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Sonic the Hedgehog Customs - Objects_60
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 35
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dd13f29051f1a34da2e6035bd6c2400
+      internalID: -1804730511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Sonic the Hedgehog Customs - Objects_61
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 35
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15fc95b1014531748916b0c5c610ebc5
+      internalID: 1498857361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Sonic the Hedgehog Customs - Objects_62
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 35
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40a5d293c79a3564e8d9366e008c81ef
+      internalID: -890159122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Sonic the Hedgehog Customs - Objects_74
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 20
+        width: 6
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bba84ae9ce592334d8754e38c2ec0102
+      internalID: 964940190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Sonic the Hedgehog Customs - Objects_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 119
+        width: 31
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 422c113316c048744b0be63212f03901
+      internalID: -1486308384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Custom Edited - Sonic the Hedgehog Customs - Objects_62: -890159122
+      Custom Edited - Sonic the Hedgehog Customs - Objects_35: 209334357
+      Custom Edited - Sonic the Hedgehog Customs - Objects_22: 1311878132
+      Custom Edited - Sonic the Hedgehog Customs - Objects_53: -1008587660
+      Custom Edited - Sonic the Hedgehog Customs - Objects_41: -1165448264
+      Custom Edited - Sonic the Hedgehog Customs - Objects_15: -1238110356
+      Custom Edited - Sonic the Hedgehog Customs - Objects_86: -969342631
+      Custom Edited - Sonic the Hedgehog Customs - Objects_46: -1645852211
+      Custom Edited - Sonic the Hedgehog Customs - Objects_34: -1731285659
+      Custom Edited - Sonic the Hedgehog Customs - Objects_20: -1687674434
+      Custom Edited - Sonic the Hedgehog Customs - Objects_81: -1302903079
+      Custom Edited - Sonic the Hedgehog Customs - Objects_13: -783848851
+      Custom Edited - Sonic the Hedgehog Customs - Objects_61: 1498857361
+      Custom Edited - Sonic the Hedgehog Customs - Objects_14: -2029470516
+      Custom Edited - Sonic the Hedgehog Customs - Objects_5: -1043051851
+      Custom Edited - Sonic the Hedgehog Customs - Objects_11: 370020934
+      Custom Edited - Sonic the Hedgehog Customs - Objects_17: 217130272
+      Custom Edited - Sonic the Hedgehog Customs - Objects_85: 234770270
+      Custom Edited - Sonic the Hedgehog Customs - Objects_59: -773624932
+      Custom Edited - Sonic the Hedgehog Customs - Objects_29: 1360718401
+      Custom Edited - Sonic the Hedgehog Customs - Objects_7: 499559178
+      Custom Edited - Sonic the Hedgehog Customs - Objects_9: 706273779
+      Custom Edited - Sonic the Hedgehog Customs - Objects_75: -2139485746
+      Custom Edited - Sonic the Hedgehog Customs - Objects_77: 2013411236
+      Custom Edited - Sonic the Hedgehog Customs - Objects_50: -1530822537
+      Custom Edited - Sonic the Hedgehog Customs - Objects_83: -1636459682
+      Custom Edited - Sonic the Hedgehog Customs - Objects_1: -598439939
+      Custom Edited - Sonic the Hedgehog Customs - Objects_3: -1216077649
+      Custom Edited - Sonic the Hedgehog Customs - Objects_80: -248107646
+      Custom Edited - Sonic the Hedgehog Customs - Objects_51: 840764925
+      Custom Edited - Sonic the Hedgehog Customs - Objects_60: -1804730511
+      Custom Edited - Sonic the Hedgehog Customs - Objects_42: 328472629
+      Custom Edited - Sonic the Hedgehog Customs - Objects_67: 870359713
+      Custom Edited - Sonic the Hedgehog Customs - Objects_0: -1486308384
+      Custom Edited - Sonic the Hedgehog Customs - Objects_69: 1098271667
+      Custom Edited - Sonic the Hedgehog Customs - Objects_65: -1709519259
+      Custom Edited - Sonic the Hedgehog Customs - Objects_44: 309580624
+      Custom Edited - Sonic the Hedgehog Customs - Objects_33: -1419701361
+      Custom Edited - Sonic the Hedgehog Customs - Objects_12: -766268557
+      Custom Edited - Sonic the Hedgehog Customs - Objects_70: -1896334501
+      Custom Edited - Sonic the Hedgehog Customs - Objects_48: 635286802
+      Custom Edited - Sonic the Hedgehog Customs - Objects_52: -129336154
+      Custom Edited - Sonic the Hedgehog Customs - Objects_28: -295703029
+      Custom Edited - Sonic the Hedgehog Customs - Objects_82: -1664736518
+      Custom Edited - Sonic the Hedgehog Customs - Objects_30: -883526274
+      Custom Edited - Sonic the Hedgehog Customs - Objects_25: 1889942648
+      Custom Edited - Sonic the Hedgehog Customs - Objects_58: 1020978192
+      Custom Edited - Sonic the Hedgehog Customs - Objects_31: -1728814035
+      Custom Edited - Sonic the Hedgehog Customs - Objects_36: -2071039136
+      Custom Edited - Sonic the Hedgehog Customs - Objects_43: -1396102069
+      Custom Edited - Sonic the Hedgehog Customs - Objects_73: 24878750
+      Custom Edited - Sonic the Hedgehog Customs - Objects_45: -553418038
+      Custom Edited - Sonic the Hedgehog Customs - Objects_76: -320569601
+      Custom Edited - Sonic the Hedgehog Customs - Objects_56: 1637409895
+      Custom Edited - Sonic the Hedgehog Customs - Objects_64: 163367095
+      Custom Edited - Sonic the Hedgehog Customs - Objects_26: 1422971316
+      Custom Edited - Sonic the Hedgehog Customs - Objects_54: 214645096
+      Custom Edited - Sonic the Hedgehog Customs - Objects_66: 822656689
+      Custom Edited - Sonic the Hedgehog Customs - Objects_55: -138104673
+      Custom Edited - Sonic the Hedgehog Customs - Objects_39: -876433313
+      Custom Edited - Sonic the Hedgehog Customs - Objects_16: 963359463
+      Custom Edited - Sonic the Hedgehog Customs - Objects_63: -982193185
+      Custom Edited - Sonic the Hedgehog Customs - Objects_79: 1771699583
+      Custom Edited - Sonic the Hedgehog Customs - Objects_74: 964940190
+      Custom Edited - Sonic the Hedgehog Customs - Objects_84: 183335009
+      Custom Edited - Sonic the Hedgehog Customs - Objects_2: -1316838540
+      Custom Edited - Sonic the Hedgehog Customs - Objects_21: 1516159240
+      Custom Edited - Sonic the Hedgehog Customs - Objects_18: -405818012
+      Custom Edited - Sonic the Hedgehog Customs - Objects_72: 1202017377
+      Custom Edited - Sonic the Hedgehog Customs - Objects_4: -985186099
+      Custom Edited - Sonic the Hedgehog Customs - Objects_47: 1979338561
+      Custom Edited - Sonic the Hedgehog Customs - Objects_27: 379502048
+      Custom Edited - Sonic the Hedgehog Customs - Objects_37: 178797226
+      Custom Edited - Sonic the Hedgehog Customs - Objects_23: 1830567640
+      Custom Edited - Sonic the Hedgehog Customs - Objects_10: -451760614
+      Custom Edited - Sonic the Hedgehog Customs - Objects_19: -1261313759
+      Custom Edited - Sonic the Hedgehog Customs - Objects_57: 115447119
+      Custom Edited - Sonic the Hedgehog Customs - Objects_71: 618862706
+      Custom Edited - Sonic the Hedgehog Customs - Objects_8: -1320978928
+      Custom Edited - Sonic the Hedgehog Customs - Objects_24: -515568596
+      Custom Edited - Sonic the Hedgehog Customs - Objects_38: -811898550
+      Custom Edited - Sonic the Hedgehog Customs - Objects_40: 1185728353
+      Custom Edited - Sonic the Hedgehog Customs - Objects_32: 1255853120
+      Custom Edited - Sonic the Hedgehog Customs - Objects_78: -328095241
+      Custom Edited - Sonic the Hedgehog Customs - Objects_49: -486516646
+      Custom Edited - Sonic the Hedgehog Customs - Objects_6: 2091879742
+      Custom Edited - Sonic the Hedgehog Customs - Objects_68: 1371008097
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

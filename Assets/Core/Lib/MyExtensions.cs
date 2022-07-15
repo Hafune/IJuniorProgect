@@ -52,7 +52,7 @@ namespace Lib
                 y ?? vector.y
             );
 
-        public static Vector2 RotateBy(this Vector2 v, float a)
+        public static Vector2 RotatedBy(this Vector2 v, float a)
         {
             a *= Mathf.Deg2Rad;
             var ca = Math.Cos(a);
@@ -65,7 +65,7 @@ namespace Lib
         public static Vector2 ReflectBy(this Vector2 vector, Vector2 normal)
         {
             var reflect = Vector2.Reflect(vector.normalized, normal);
-            return vector.RotateBy(Vector2.SignedAngle(vector.normalized, reflect));
+            return vector.RotatedBy(Vector2.SignedAngle(vector.normalized, reflect));
         }
     }
 }
