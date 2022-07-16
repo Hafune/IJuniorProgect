@@ -17,7 +17,7 @@ public class PhysicsSonic2D : MonoBehaviour
     private const float _baseMaxHorizontalSpeed = 20f;
     private const float _totalMaxHorizontalSpeed = 40f;
     private const float _maxVerticalSpeed = 40f;
-    private const float _stickySpeed = _totalMaxHorizontalSpeed / 2f;
+    private const float _stickySpeed = _totalMaxHorizontalSpeed / 4f;
     private const float _groundOffset = .01f;
     private const float _maxNextNormalAngle = 50f;
     private const float _accelerationTime = .0005f;
@@ -40,6 +40,12 @@ public class PhysicsSonic2D : MonoBehaviour
 
     public void SetVelocity(Vector2 velocity) =>
         _velocity = velocity.RotatedBy(Vector2.SignedAngle(_groundNormal, Vector2.up));
+
+    public void SetLayer(int layer)
+    {
+        _contactFilter.SetLayerMask(Physics2D.GetLayerCollisionMask(layer));
+        gameObject.layer = layer;
+    }
 
     private void Start()
     {
@@ -221,11 +227,10 @@ public class PhysicsSonic2D : MonoBehaviour
             if (!_lastGrounded)
                 ChangeVelocityByNormal(_groundNormal);
 
-            _contactFilter.SetLayerMask(Physics2D.GetLayerCollisionMask(layer));
-            gameObject.layer = layer;
-            // _velocity.y = Physics2D.gravity.y * Time.deltaTime;
-            // _velocity.y *= Mathf.Abs(_velocity.x) > _stickySpeed ? 2 : 1;
-            _velocity.y = -2;
+            SetLayer(layer);
+            _velocity.y = Physics2D.gravity.y * Time.deltaTime;
+            _velocity.y *= Mathf.Abs(_velocity.x) > _stickySpeed ? 2 : .5f;
+            // _velocity.y = -2;
             return;
         }
 

@@ -22,7 +22,7 @@ public class PhysicsFunctions
             var hit2d = _hitBuffer[i];
             var currentDistance = hit2d.distance;
 
-            if (currentDistance >= distance || Vector2.Dot(hit2d.normal, direction) > 0)
+            if (hit2d.collider.isTrigger || currentDistance >= distance || Vector2.Dot(hit2d.normal, direction) > 0)
                 continue;
 
             if (hit2d.transform.TryGetComponent(out PlatformEffector2D platform))

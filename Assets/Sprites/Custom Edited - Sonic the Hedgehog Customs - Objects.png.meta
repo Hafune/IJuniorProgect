@@ -199,7 +199,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -283,7 +283,7 @@ TextureImporter:
         width: 14
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -367,7 +367,7 @@ TextureImporter:
         width: 12
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -388,7 +388,7 @@ TextureImporter:
         width: 8
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -472,7 +472,7 @@ TextureImporter:
         width: 6
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -505,6 +505,69 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Sonic the Hedgehog Customs - Objects_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 41
+        width: 16
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aaff5d755dc36194c9b75c5cbd424b96
+      internalID: -598439939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Sonic the Hedgehog Customs - Objects_2
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be4a12d739b5ee344babd68ab6d8236d
+      internalID: -1316838540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Sonic the Hedgehog Customs - Objects_3
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a13ce942cfb586d49905e3cf1b6f96f8
+      internalID: -1216077649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -517,7 +580,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Custom Edited - Sonic the Hedgehog Customs - Objects_62: -890159122
-      Custom Edited - Sonic the Hedgehog Customs - Objects_35: 209334357
+      Custom Edited - Sonic the Hedgehog Customs - Objects_68: 1371008097
       Custom Edited - Sonic the Hedgehog Customs - Objects_22: 1311878132
       Custom Edited - Sonic the Hedgehog Customs - Objects_53: -1008587660
       Custom Edited - Sonic the Hedgehog Customs - Objects_41: -1165448264
@@ -602,7 +665,7 @@ TextureImporter:
       Custom Edited - Sonic the Hedgehog Customs - Objects_78: -328095241
       Custom Edited - Sonic the Hedgehog Customs - Objects_49: -486516646
       Custom Edited - Sonic the Hedgehog Customs - Objects_6: 2091879742
-      Custom Edited - Sonic the Hedgehog Customs - Objects_68: 1371008097
+      Custom Edited - Sonic the Hedgehog Customs - Objects_35: 209334357
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

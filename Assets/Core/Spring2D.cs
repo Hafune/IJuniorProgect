@@ -1,3 +1,4 @@
+using Lib;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
@@ -9,7 +10,7 @@ public class Spring2D : MonoBehaviour
 
     private Animator _animator;
 
-    public float Magnitude => _magnitude;
+    public Vector2 Velocity => (Vector2.up * _magnitude).RotatedBy(transform.rotation.eulerAngles.z);
 
     private void Start() => _animator = GetComponent<Animator>();
 
