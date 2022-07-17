@@ -16,14 +16,7 @@ public class DisableNotVisibleDecoration : MonoBehaviour
     private void Start()
     {
         _renderer = GetComponent<Renderer>();
-
-        _components = GetComponents<Component>()
-            .Where(component =>
-                component != this &&
-                component.GetType() != typeof(Renderer) &&
-                component is Behaviour
-            )
-            .Select(component => component as Behaviour);
+        _components = GetComponents<Behaviour>().Where(component => component != this);
     }
 
     private void FixedUpdate()

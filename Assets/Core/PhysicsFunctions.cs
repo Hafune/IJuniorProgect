@@ -20,16 +20,14 @@ public class PhysicsFunctions
         for (int i = 0; i < count; i++)
         {
             var hit2d = _hitBuffer[i];
+            
             var currentDistance = hit2d.distance;
 
-            if (hit2d.collider.isTrigger || currentDistance >= distance || Vector2.Dot(hit2d.normal, direction) > 0)
+            if (hit2d.collider.isTrigger || currentDistance > distance || Vector2.Dot(hit2d.normal, direction) > 0)
                 continue;
 
             if (hit2d.transform.TryGetComponent(out PlatformEffector2D platform))
             {
-                if (hit2d.distance == 0)
-                    continue;
-
                 var platformNormal = Vector2.up.RotatedBy(platform.rotationalOffset);
                 float angleDif = Vector2.Angle(-direction, platformNormal);
                 float hitDif = Vector2.Angle(hit2d.normal, platformNormal);

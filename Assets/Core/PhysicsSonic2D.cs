@@ -65,14 +65,14 @@ public class PhysicsSonic2D : MonoBehaviour
         _groundFriction = _accelerationTime / Time.fixedDeltaTime * 2;
         _airFriction = _accelerationTime / Time.fixedDeltaTime * .01f;
 
-        const float circleRectCastDifference = .01f;
+        const float circleBoxCollidersCastDifference = .01f;
         var size = _bodyCollider.bounds.size;
-        var boxSize = new Vector2(size.x * .45f, size.x / 2 - circleRectCastDifference);
+        var boxSize = new Vector2(size.x * .49f, size.x / 2 - circleBoxCollidersCastDifference);
         _leftLeg.size = boxSize;
         _rightLeg.size = boxSize;
 
         var offset = -size / 4;
-        offset.y += circleRectCastDifference / 2;
+        offset.y += circleBoxCollidersCastDifference / 2;
         _leftLeg.offset = offset;
         _rightLeg.offset = new Vector2(-offset.x, offset.y);
     }
@@ -154,12 +154,12 @@ public class PhysicsSonic2D : MonoBehaviour
             _functions.FindNearestNormal(move, deltaMagnitude,
                 _bodyCollider, _contactFilter);
 
-        float tail = deltaMagnitude - distance;
+        float distanceWithGroundOffset = distance - _groundOffset;
 
         if (normal == Vector2.zero)
             _rigidbody.velocity += move / Time.deltaTime;
         else
-            _rigidbody.velocity += move * (tail / deltaMagnitude) / Time.deltaTime;
+            _rigidbody.velocity += move * (distanceWithGroundOffset / deltaMagnitude) / Time.deltaTime;
 
         if (maxRecursion <= 0 || normal == Vector2.zero || _slopeNormal != _groundNormal)
             return;
@@ -167,7 +167,8 @@ public class PhysicsSonic2D : MonoBehaviour
         if (!IsValidNextGroundNormal(normal))
             ChangeVelocityByNormal(normal);
         else
-            ChangeBodyVelocity(CalculateMoveAlong(normal) * ((deltaMagnitude - tail) * _velocity.x.Sign()),
+            ChangeBodyVelocity(
+                CalculateMoveAlong(normal) * ((deltaMagnitude - distanceWithGroundOffset) * _velocity.x.Sign()),
                 --maxRecursion);
     }
 
@@ -176,20 +177,22 @@ public class PhysicsSonic2D : MonoBehaviour
         int dir = verticalForce.Sign() == 0 ? -1 : verticalForce.Sign();
         float castDistance = Math.Abs(verticalForce);
 
-        var (leftNormal, leftDistance, leftLayer) =
+        (var leftNormal, float leftDistance, int leftLayer) =
             _functions.FindNearestNormal(_groundNormal * dir, castDistance, _leftLeg, _contactFilter);
 
-        var (rightNormal, rightDistance, rightLayer) =
+        (var rightNormal, float rightDistance, int rightLayer) =
             _functions.FindNearestNormal(_groundNormal * dir, castDistance, _rightLeg, _contactFilter);
 
-        var (normal, distance, layer) =
+        (var normal, float distance, int layer) =
             _functions.FindNearestNormal(_groundNormal * dir, castDistance, _bodyCollider, _contactFilter);
 
         bool centerNormalIsValid = normal != Vector2.zero;
-        var leftNormalIsValid =
-            IsValidNextGroundNormal(leftNormal, centerNormalIsValid && leftDistance > 0 ? _maxNextNormalAngle : 1);
-        var rightNormalIsValid =
-            IsValidNextGroundNormal(rightNormal, centerNormalIsValid && rightDistance > 0 ? _maxNextNormalAngle : 1);
+        var leftNormalIsValid = leftDistance > 0 &&
+                                IsValidNextGroundNormal(leftNormal,
+                                    centerNormalIsValid && leftDistance > distance ? _maxNextNormalAngle : 1);
+        var rightNormalIsValid = rightDistance > 0 &&
+                                 IsValidNextGroundNormal(rightNormal,
+                                     centerNormalIsValid && rightDistance > distance ? _maxNextNormalAngle : 1);
 
         if (leftNormalIsValid && !rightNormalIsValid)
             UpdateGroundNormal(force: verticalForce, normal: leftNormal, distance: leftDistance, layer: leftLayer);
