@@ -23,7 +23,7 @@ public class PhysicsFunctions
             
             var currentDistance = hit2d.distance;
 
-            if (hit2d.collider.isTrigger || currentDistance > distance || Vector2.Dot(hit2d.normal, direction) > 0)
+            if (hit2d.collider.isTrigger || currentDistance >= distance || Vector2.Dot(hit2d.normal, direction) > 0)
                 continue;
 
             if (hit2d.transform.TryGetComponent(out PlatformEffector2D platform))
@@ -33,7 +33,7 @@ public class PhysicsFunctions
                 float hitDif = Vector2.Angle(hit2d.normal, platformNormal);
                 float halfSurfaceArc = platform.surfaceArc / 2;
 
-                if (angleDif > halfSurfaceArc || hitDif > halfSurfaceArc)
+                if (hit2d.distance == 0 || angleDif > halfSurfaceArc || hitDif > halfSurfaceArc)
                     continue;
             }
 
