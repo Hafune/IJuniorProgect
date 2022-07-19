@@ -37,7 +37,7 @@ public class PhysicsSonic2D : MonoBehaviour
     public void SetForce(Vector2 force) => _targetVelocity = force;
 
     public void SetVelocity(Vector2 velocity) =>
-        _velocity = velocity.RotatedBy(Vector2.SignedAngle(_groundNormal, Vector2.up));
+        _velocity = velocity.RotatedByAngleDifference(_groundNormal, Vector2.up);
 
     public void SetLayer(int layer)
     {
@@ -107,9 +107,9 @@ public class PhysicsSonic2D : MonoBehaviour
         var deltaPosition = _velocity * Time.deltaTime;
 
         if (_grounded && deltaPosition.y - _groundOffset * 1.5 < 0)
-            UpdateGroundNormal(-deltaPosition.magnitude - _groundOffset);
+            CheckGroundNormal(-deltaPosition.magnitude - _groundOffset);
         else
-            UpdateGroundNormal(deltaPosition.y + (deltaPosition.y - _groundOffset).Sign() * _groundOffset);
+            CheckGroundNormal(deltaPosition.y + (deltaPosition.y - _groundOffset).Sign() * _groundOffset);
 
         deltaPosition = _velocity * Time.deltaTime;
 
@@ -121,7 +121,7 @@ public class PhysicsSonic2D : MonoBehaviour
         if (normal != Vector2.zero && !IsValidNextGroundNormal(normal))
             _velocity.x = (distance - _groundOffset) * _velocity.x.Sign() / Time.deltaTime;
 
-        var move = _velocity.RotatedBy(Vector2.SignedAngle(Vector2.up, _groundNormal)) * Time.deltaTime;
+        var move = _velocity.RotatedByAngleDifference(Vector2.up, _groundNormal) * Time.deltaTime;
 
         ChangeBodyVelocity(move);
 
@@ -160,20 +160,19 @@ public class PhysicsSonic2D : MonoBehaviour
 
         if (!IsValidNextGroundNormal(normal))
         {
-            ChangeVelocityByNormal(normal);
-            tailMove = (tailMove + tailMove.ReflectBy(normal)) / 2;
+            _velocity = _velocity.ReflectedAlong(normal);
+            tailMove = (tailMove + tailMove.ReflectedBy(normal)) / 2;
             ChangeBodyVelocity(tailMove, --recursionsLeft);
         }
         else
         {
-            // var tail = tailMove.RotatedBy(Vector2.SignedAngle(_groundNormal, normal) * 1.05f);
-            var tail = tailMove.ReflectBy(normal);
+            var tail = tailMove.ReflectedBy(normal);
             _groundNormal = normal;
             ChangeBodyVelocity(tail, --recursionsLeft);
         }
     }
 
-    private void UpdateGroundNormal(float verticalForce)
+    private void CheckGroundNormal(float verticalForce)
     {
         int dir = verticalForce.Sign() == 0 ? -1 : verticalForce.Sign();
         float castDistance = Math.Abs(verticalForce);
@@ -212,7 +211,7 @@ public class PhysicsSonic2D : MonoBehaviour
         if (normal == Vector2.zero)
         {
             if (_lastGrounded)
-                _velocity = _velocity.RotatedBy(Vector2.SignedAngle(Vector2.up, _groundNormal));
+                _velocity = _velocity.RotatedByAngleDifference(Vector2.up, _groundNormal);
 
             _groundNormal = Vector2.up;
             return;
@@ -225,11 +224,9 @@ public class PhysicsSonic2D : MonoBehaviour
         _grounded = true;
 
         if (!_lastGrounded)
-            ChangeVelocityByNormal(_groundNormal);
+            _velocity = _velocity.ReflectedAlong(_groundNormal);
 
         _velocity.y = -(distance - _groundOffset) / Time.deltaTime;
         SetLayer(layer);
     }
-
-    private void ChangeVelocityByNormal(Vector2 normal) => _velocity = (_velocity + _velocity.ReflectBy(normal)) / 2;
 }
