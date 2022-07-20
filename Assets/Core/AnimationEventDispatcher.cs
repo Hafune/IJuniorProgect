@@ -1,8 +1,5 @@
 using System;
-using System.Collections;
-using UnityEditor.PackageManager;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class AnimationEventDispatcher : MonoBehaviour
 {
@@ -12,54 +9,34 @@ public class AnimationEventDispatcher : MonoBehaviour
     private static readonly int IsDamaged = Animator.StringToHash("IsDamaged");
 
     [SerializeField] private Animator _animator;
-    [SerializeField] private UnityEvent _onDamagedEnd;
     [SerializeField] private SpriteRenderer _spriteRenderer;
 
     private const float changeDirectionValue = .01f;
-    private const float damagedTime = 1f;
     private const float speedToRun = .45f;
+    private const float maxMoveAnimationSpeed = 2.5f;
+    private const float maxRunAnimationSpeed = 4f;
 
     public void UpdateHorizontalVelocity(float force)
     {
-        if (_animator.GetBool(IsDamaged))
-            return;
-
         if (force < -changeDirectionValue)
             _spriteRenderer.flipX = true;
         else if (force > changeDirectionValue)
             _spriteRenderer.flipX = false;
 
         float absForce = Math.Abs(force);
-        var animationAddSpeed = Mathf.Max(0, absForce < speedToRun ? absForce * 4 : (absForce - speedToRun) * 8);
-        _animator.speed = 1 + animationAddSpeed;
 
         _animator.SetBool(IsMoving, absForce > changeDirectionValue);
         _animator.SetBool(IsRunning, absForce > speedToRun);
-    }
 
-    public void UpdateGrounded(bool grounded)
-    {
         if (_animator.GetBool(IsDamaged))
-            return;
-
-        _animator.SetBool(OnGround, grounded);
+            _animator.speed = 1;
+        else if (_animator.GetBool(IsRunning))
+            _animator.speed = 1 + (absForce - speedToRun) / (1 - speedToRun) * maxRunAnimationSpeed;
+        else
+            _animator.speed = 1 + absForce / speedToRun * maxMoveAnimationSpeed;
     }
 
-    public void AnimateDamaged()
-    {
-        if (_animator.GetBool(IsDamaged))
-            throw new Exception("Function TakeDamage should not be called");
+    public void UpdateGrounded(bool grounded) => _animator.SetBool(OnGround, grounded);
 
-        StartCoroutine(PlayAnimationDamaged());
-    }
-
-    private IEnumerator PlayAnimationDamaged()
-    {
-        _animator.SetBool(IsDamaged, true);
-
-        yield return new WaitForSeconds(damagedTime);
-
-        _animator.SetBool(IsDamaged, false);
-        _onDamagedEnd.Invoke();
-    }
+    public void SetDamaged(bool damaged) => _animator.SetBool(IsDamaged, damaged);
 }
