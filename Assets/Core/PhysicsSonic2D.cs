@@ -5,11 +5,11 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(CircleCollider2D))]
 public class PhysicsSonic2D : MonoBehaviour
 {
-    [SerializeField] private UnityEvent<float> _setHorizontalForce;
-    [SerializeField] private UnityEvent<bool> _setGrounded;
+    [SerializeField] private UnityEvent<float> _dispatchHorizontalForce;
+    [SerializeField] private UnityEvent<bool> _dispatchGrounded;
 
     private readonly PhysicsFunctions _functions = new PhysicsFunctions();
     private const float _jumpScale = 12f;
@@ -21,12 +21,12 @@ public class PhysicsSonic2D : MonoBehaviour
     private const float _groundOffset = .01f;
     private const float _maxNextNormalAngle = 50f;
     private const float _accelerationTime = .0005f;
-    private float _groundFriction;
-    private float _airFriction;
+    private const float _groundFriction = 0.06f;
+    private const float _airFriction = _groundFriction * .01f;
     private bool _grounded;
     private bool _lastGrounded;
     private Rigidbody2D _rigidbody = null!;
-    private CircleCollider2D _bodyCollider = null!;
+    private CircleCollider2D _circleCollider = null!;
     private BoxCollider2D _leftLeg = null!;
     private BoxCollider2D _rightLeg = null!;
     private ContactFilter2D _contactFilter;
@@ -48,7 +48,7 @@ public class PhysicsSonic2D : MonoBehaviour
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        _bodyCollider = GetComponent<CircleCollider2D>();
+        _circleCollider = GetComponent<CircleCollider2D>();
         _contactFilter.SetLayerMask(Physics2D.GetLayerCollisionMask(gameObject.layer));
         _contactFilter.useTriggers = false;
         _contactFilter.useLayerMask = true;
@@ -60,16 +60,15 @@ public class PhysicsSonic2D : MonoBehaviour
         _leftLeg.isTrigger = true;
         _rightLeg.isTrigger = true;
 
-        _groundFriction = _accelerationTime / Time.fixedDeltaTime * 2;
-        _airFriction = _accelerationTime / Time.fixedDeltaTime * .01f;
-
         const float circleBoxCollidersCastDifference = .01f;
-        var size = _bodyCollider.bounds.size;
+        var size = _circleCollider.bounds.size;
         var boxSize = new Vector2(size.x * .49f, size.x / 2 - circleBoxCollidersCastDifference);
         _leftLeg.size = boxSize;
         _rightLeg.size = boxSize;
 
         var offset = -size / 4;
+        offset.x += _circleCollider.offset.x;
+        offset.y += _circleCollider.offset.y;
         offset.y += circleBoxCollidersCastDifference / 2;
         _leftLeg.offset = offset;
         _rightLeg.offset = new Vector2(-offset.x, offset.y);
@@ -111,30 +110,30 @@ public class PhysicsSonic2D : MonoBehaviour
         else
             CheckGroundNormal(deltaPosition.y + (deltaPosition.y - _groundOffset).Sign() * _groundOffset);
 
-        deltaPosition = _velocity * Time.deltaTime;
-
-        (var normal, float distance, _) =
-            _functions.FindNearestNormal(CalculateMoveAlong(_groundNormal) * deltaPosition.x,
-                Math.Abs(deltaPosition.x) + _groundOffset,
-                _bodyCollider, _contactFilter);
-
-        if (normal != Vector2.zero && !IsValidNextGroundNormal(normal))
-            _velocity.x = (distance - _groundOffset) * _velocity.x.Sign() / Time.deltaTime;
+        CheckWallNormal();
 
         var move = _velocity.RotatedByAngleDifference(Vector2.up, _groundNormal) * Time.deltaTime;
 
         ChangeBodyVelocity(move);
 
-        _setHorizontalForce.Invoke(_velocity.x / _totalMaxHorizontalSpeed);
-        _setGrounded.Invoke(_grounded);
+        _dispatchHorizontalForce.Invoke(_velocity.x / _totalMaxHorizontalSpeed);
+        _dispatchGrounded.Invoke(_grounded);
 
         _rigidbody.SetRotation(Vector2.SignedAngle(Vector2.up, _groundNormal));
     }
 
-    private Vector2 CalculateMoveAlong(Vector2 normal) => new Vector2(normal.y, -normal.x);
+    private void CheckWallNormal()
+    {
+        var deltaPosition = _velocity * Time.deltaTime;
 
-    private bool IsValidNextGroundNormal(Vector2 newNormal, float maxAngleDifference = _maxNextNormalAngle) =>
-        newNormal != Vector2.zero && Vector2.Angle(_groundNormal, newNormal) < maxAngleDifference;
+        (var normal, float distance, _) =
+            _functions.FindNearestNormal(CalculateMoveAlong(_groundNormal) * deltaPosition.x,
+                Math.Abs(deltaPosition.x) + _groundOffset,
+                _circleCollider, _contactFilter);
+
+        if (normal != Vector2.zero && !IsValidNextGroundNormal(normal))
+            _velocity.x = (distance - _groundOffset) * _velocity.x.Sign() / Time.deltaTime;
+    }
 
     private void ChangeBodyVelocity(Vector2 move, float recursionsLeft = 5)
     {
@@ -146,7 +145,7 @@ public class PhysicsSonic2D : MonoBehaviour
 
         (var normal, float distance, _) =
             _functions.FindNearestNormal(nextMove, deltaMagnitude + _groundOffset,
-                _bodyCollider, _contactFilter);
+                _circleCollider, _contactFilter);
 
         float totalMagnitude = distance - _groundOffset;
         var totalMove = nextMove * (totalMagnitude / deltaMagnitude);
@@ -184,7 +183,7 @@ public class PhysicsSonic2D : MonoBehaviour
             _functions.FindNearestNormal(_groundNormal * dir, castDistance, _rightLeg, _contactFilter);
 
         (var normal, float distance, int layer) =
-            _functions.FindNearestNormal(_groundNormal * dir, castDistance, _bodyCollider, _contactFilter);
+            _functions.FindNearestNormal(_groundNormal * dir, castDistance, _circleCollider, _contactFilter);
 
         bool centerNormalIsValid = normal != Vector2.zero;
 
@@ -229,4 +228,9 @@ public class PhysicsSonic2D : MonoBehaviour
         _velocity.y = -(distance - _groundOffset) / Time.deltaTime;
         SetLayer(layer);
     }
+
+    private Vector2 CalculateMoveAlong(Vector2 normal) => new Vector2(normal.y, -normal.x);
+
+    private bool IsValidNextGroundNormal(Vector2 newNormal, float maxAngleDifference = _maxNextNormalAngle) =>
+        newNormal != Vector2.zero && Vector2.Angle(_groundNormal, newNormal) < maxAngleDifference;
 }
