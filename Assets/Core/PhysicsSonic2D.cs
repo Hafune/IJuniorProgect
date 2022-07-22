@@ -22,7 +22,7 @@ public class PhysicsSonic2D : MonoBehaviour
     private const float _maxNextNormalAngle = 50f;
     private const float _accelerationTime = .0005f;
     private const float _groundFriction = 0.06f;
-    private const float _airFriction = _groundFriction * .01f;
+    private const float _airFriction = _groundFriction * .05f;
     private bool _grounded;
     private bool _lastGrounded;
     private Rigidbody2D _rigidbody = null!;
@@ -104,13 +104,11 @@ public class PhysicsSonic2D : MonoBehaviour
         _rigidbody.velocity = Vector2.zero;
 
         var deltaPosition = _velocity * Time.deltaTime;
-        float deltaMagnitude = deltaPosition.magnitude;
+        float deltaDistance = deltaPosition.magnitude + _groundOffset;
 
-        // if (_grounded && deltaPosition.y - _groundOffset * 1.5 < 0)
-        //     CheckGroundNormal(-deltaPosition.magnitude - _groundOffset);
         if (_grounded && deltaPosition.y - _groundOffset < 0)
-            CheckGroundNormal(-(deltaMagnitude - _groundOffset +
-                                (deltaMagnitude + _groundOffset) * Math.Min(_groundNormal.y, 0) * (1 - _stickySpeed)));
+            CheckGroundNormal(-deltaDistance +
+                              deltaDistance * Math.Min(_groundNormal.y, 0) * (1 - _stickySpeed));
         else
             CheckGroundNormal(deltaPosition.y + (deltaPosition.y - _groundOffset).Sign() * _groundOffset);
 
