@@ -12,17 +12,17 @@ public class PhysicsSonic2D : MonoBehaviour
     [SerializeField] private UnityEvent<bool> _dispatchGrounded;
 
     private readonly PhysicsFunctions _functions = new PhysicsFunctions();
-    private const float _jumpScale = 12f;
-    private const float _moveScale = 8f;
-    private const float _baseMaxHorizontalSpeed = 20f;
-    private const float _totalMaxHorizontalSpeed = 40f;
-    private const float _maxVerticalSpeed = 40f;
-    private const float _stickySpeed = .3f;
-    private const float _groundOffset = .01f;
-    private const float _maxNextNormalAngle = 50f;
-    private const float _accelerationTime = .0005f;
-    private const float _groundFriction = .06f;
-    private const float _airFriction = .003f;
+    private const float JumpScale = 12f;
+    private const float MoveScale = 8f;
+    private const float BaseMaxHorizontalSpeed = 20f;
+    private const float TotalMaxHorizontalSpeed = 40f;
+    private const float MaxVerticalSpeed = 40f;
+    private const float StickySpeed = .3f;
+    private const float GroundOffset = .01f;
+    private const float MaxNextNormalAngle = 50f;
+    private const float AccelerationTime = .0005f;
+    private const float GroundFriction = .06f;
+    private const float AirFriction = .003f;
     private bool _isGrounded;
     private bool _lastGrounded;
     private Rigidbody2D _rigidbody = null!;
@@ -77,14 +77,14 @@ public class PhysicsSonic2D : MonoBehaviour
     private void FixedUpdate()
     {
         var gravity = _groundNormal * (Physics2D.gravity.y * Time.deltaTime);
-        float friction = _velocity.x.Sign() * (_isGrounded ? _groundFriction : _airFriction);
+        float friction = _velocity.x.Sign() * (_isGrounded ? GroundFriction : AirFriction);
         float speed = Math.Abs(_velocity.x);
 
-        _velocity.x += _targetVelocity.x * _moveScale * (_accelerationTime / Time.deltaTime) - gravity.x;
+        _velocity.x += _targetVelocity.x * MoveScale * (AccelerationTime / Time.deltaTime) - gravity.x;
         _velocity.x = MyMath.ClampBetween(_velocity.x - friction, _velocity.x, 0f);
         float totalSpeed = Math.Abs(_velocity.x);
 
-        if (totalSpeed > _baseMaxHorizontalSpeed && totalSpeed > speed)
+        if (totalSpeed > BaseMaxHorizontalSpeed && totalSpeed > speed)
         {
             _velocity.x = speed * _velocity.x.Sign();
             var along = CalculateMoveAlong(_groundNormal) * _velocity.x.Sign();
@@ -96,21 +96,21 @@ public class PhysicsSonic2D : MonoBehaviour
         _velocity.y += gravity.y;
 
         if (_isGrounded && _targetVelocity.y > 0)
-            _velocity.y += _targetVelocity.y * _jumpScale;
+            _velocity.y += _targetVelocity.y * JumpScale;
 
-        _velocity.x = Math.Clamp(_velocity.x, -_totalMaxHorizontalSpeed, _totalMaxHorizontalSpeed);
-        _velocity.y = Math.Clamp(_velocity.y, -_maxVerticalSpeed, _maxVerticalSpeed);
+        _velocity.x = Math.Clamp(_velocity.x, -TotalMaxHorizontalSpeed, TotalMaxHorizontalSpeed);
+        _velocity.y = Math.Clamp(_velocity.y, -MaxVerticalSpeed, MaxVerticalSpeed);
         _targetVelocity = Vector2.zero;
         _rigidbody.velocity = Vector2.zero;
 
         var deltaPosition = _velocity * Time.deltaTime;
-        float deltaDistance = deltaPosition.magnitude + _groundOffset;
+        float deltaDistance = deltaPosition.magnitude + GroundOffset;
 
-        if (_isGrounded && deltaPosition.y - _groundOffset < 0)
+        if (_isGrounded && deltaPosition.y - GroundOffset < 0)
             CheckGroundNormal(-deltaDistance +
-                              deltaDistance * Math.Min(_groundNormal.y, 0) * (1 - _stickySpeed));
+                              deltaDistance * Math.Min(_groundNormal.y, 0) * (1 - StickySpeed));
         else
-            CheckGroundNormal(deltaPosition.y + (deltaPosition.y - _groundOffset).Sign() * _groundOffset);
+            CheckGroundNormal(deltaPosition.y + (deltaPosition.y - GroundOffset).Sign() * GroundOffset);
 
         CheckWallNormal();
 
@@ -118,7 +118,7 @@ public class PhysicsSonic2D : MonoBehaviour
 
         ChangeBodyVelocity(move);
 
-        _dispatchHorizontalForce.Invoke(_velocity.x / _totalMaxHorizontalSpeed);
+        _dispatchHorizontalForce.Invoke(_velocity.x / TotalMaxHorizontalSpeed);
         _dispatchGrounded.Invoke(_isGrounded);
 
         _rigidbody.SetRotation(Vector2.SignedAngle(Vector2.up, _groundNormal));
@@ -130,11 +130,11 @@ public class PhysicsSonic2D : MonoBehaviour
 
         (var normal, float distance, _) =
             _functions.FindNearestNormal(CalculateMoveAlong(_groundNormal) * deltaPosition.x,
-                Math.Abs(deltaPosition.x) + _groundOffset,
+                Math.Abs(deltaPosition.x) + GroundOffset,
                 _circleCollider, _contactFilter);
 
         if (normal != Vector2.zero && !IsValidNextGroundNormal(normal))
-            _velocity.x = (distance - _groundOffset) * _velocity.x.Sign() / Time.deltaTime;
+            _velocity.x = (distance - GroundOffset) * _velocity.x.Sign() / Time.deltaTime;
     }
 
     private void ChangeBodyVelocity(Vector2 move, float recursionsLeft = 5)
@@ -146,10 +146,10 @@ public class PhysicsSonic2D : MonoBehaviour
         float deltaMagnitude = nextMove.magnitude;
 
         (var normal, float distance, _) =
-            _functions.FindNearestNormal(nextMove, deltaMagnitude + _groundOffset,
+            _functions.FindNearestNormal(nextMove, deltaMagnitude + GroundOffset,
                 _circleCollider, _contactFilter);
 
-        float totalMagnitude = distance - _groundOffset;
+        float totalMagnitude = distance - GroundOffset;
         var totalMove = nextMove * (totalMagnitude / deltaMagnitude);
 
         _rigidbody.velocity = totalMove / Time.deltaTime;
@@ -191,10 +191,10 @@ public class PhysicsSonic2D : MonoBehaviour
 
         var leftNormalIsValid = leftDistance > 0 &&
                                 IsValidNextGroundNormal(leftNormal,
-                                    centerNormalIsValid && leftDistance > distance ? _maxNextNormalAngle : 1);
+                                    centerNormalIsValid && leftDistance > distance ? MaxNextNormalAngle : 1);
         var rightNormalIsValid = rightDistance > 0 &&
                                  IsValidNextGroundNormal(rightNormal,
-                                     centerNormalIsValid && rightDistance > distance ? _maxNextNormalAngle : 1);
+                                     centerNormalIsValid && rightDistance > distance ? MaxNextNormalAngle : 1);
 
         if (leftNormalIsValid && !rightNormalIsValid)
             UpdateGroundNormal(normal: leftNormal, distance: leftDistance, layer: leftLayer);
@@ -227,12 +227,12 @@ public class PhysicsSonic2D : MonoBehaviour
         if (!_lastGrounded)
             _velocity = _velocity.ReflectedAlong(_groundNormal);
 
-        _velocity.y = -(distance - _groundOffset) / Time.deltaTime;
+        _velocity.y = -(distance - GroundOffset) / Time.deltaTime;
         SetLayer(layer);
     }
 
     private Vector2 CalculateMoveAlong(Vector2 normal) => new Vector2(normal.y, -normal.x);
 
-    private bool IsValidNextGroundNormal(Vector2 newNormal, float maxAngleDifference = _maxNextNormalAngle) =>
+    private bool IsValidNextGroundNormal(Vector2 newNormal, float maxAngleDifference = MaxNextNormalAngle) =>
         newNormal != Vector2.zero && Vector2.Angle(_groundNormal, newNormal) < maxAngleDifference;
 }
