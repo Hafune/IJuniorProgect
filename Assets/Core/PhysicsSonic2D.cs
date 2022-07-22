@@ -17,7 +17,7 @@ public class PhysicsSonic2D : MonoBehaviour
     private const float _baseMaxHorizontalSpeed = 20f;
     private const float _totalMaxHorizontalSpeed = 40f;
     private const float _maxVerticalSpeed = 40f;
-    private const float _stickySpeed = _totalMaxHorizontalSpeed / 4f;
+    private const float _stickySpeed = .3f;
     private const float _groundOffset = .01f;
     private const float _maxNextNormalAngle = 50f;
     private const float _accelerationTime = .0005f;
@@ -30,14 +30,14 @@ public class PhysicsSonic2D : MonoBehaviour
     private BoxCollider2D _leftLeg = null!;
     private BoxCollider2D _rightLeg = null!;
     private ContactFilter2D _contactFilter;
-    private Vector2 _targetVelocity = Vector2.zero;
     private Vector2 _groundNormal = Vector2.up;
+    private Vector2 _targetVelocity;
     private Vector2 _velocity;
 
     public void SetForce(Vector2 force) => _targetVelocity = force;
 
     public void SetVelocity(Vector2 velocity) =>
-        _velocity = velocity.RotatedByAngleDifference(_groundNormal, Vector2.up);
+        _velocity = velocity.RotatedBySignedAngle(_groundNormal, Vector2.up);
 
     public void SetLayer(int layer)
     {
@@ -104,15 +104,19 @@ public class PhysicsSonic2D : MonoBehaviour
         _rigidbody.velocity = Vector2.zero;
 
         var deltaPosition = _velocity * Time.deltaTime;
+        float deltaMagnitude = deltaPosition.magnitude;
 
-        if (_grounded && deltaPosition.y - _groundOffset * 1.5 < 0)
-            CheckGroundNormal(-deltaPosition.magnitude - _groundOffset);
+        // if (_grounded && deltaPosition.y - _groundOffset * 1.5 < 0)
+        //     CheckGroundNormal(-deltaPosition.magnitude - _groundOffset);
+        if (_grounded && deltaPosition.y - _groundOffset < 0)
+            CheckGroundNormal(-(deltaMagnitude - _groundOffset +
+                                (deltaMagnitude + _groundOffset) * Math.Min(_groundNormal.y, 0) * (1 - _stickySpeed)));
         else
             CheckGroundNormal(deltaPosition.y + (deltaPosition.y - _groundOffset).Sign() * _groundOffset);
 
         CheckWallNormal();
 
-        var move = _velocity.RotatedByAngleDifference(Vector2.up, _groundNormal) * Time.deltaTime;
+        var move = _velocity.RotatedBySignedAngle(Vector2.up, _groundNormal) * Time.deltaTime;
 
         ChangeBodyVelocity(move);
 
@@ -210,7 +214,7 @@ public class PhysicsSonic2D : MonoBehaviour
         if (normal == Vector2.zero)
         {
             if (_lastGrounded)
-                _velocity = _velocity.RotatedByAngleDifference(Vector2.up, _groundNormal);
+                _velocity = _velocity.RotatedBySignedAngle(Vector2.up, _groundNormal);
 
             _groundNormal = Vector2.up;
             return;

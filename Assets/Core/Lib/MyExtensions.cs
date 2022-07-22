@@ -60,7 +60,7 @@ namespace Lib
             return new Vector2((float) rx, (float) (v.x * sa + v.y * ca));
         }
 
-        public static Vector2 RotatedByAngleDifference(this Vector2 v, Vector2 first, Vector2 second) => v.RotatedBy(
+        public static Vector2 RotatedBySignedAngle(this Vector2 v, Vector2 first, Vector2 second) => v.RotatedBy(
             Vector2.SignedAngle(first, second));
 
         public static Vector2 ReflectedBy(this Vector2 vector, Vector2 normal)
