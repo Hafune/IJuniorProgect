@@ -11,29 +11,29 @@ public class AnimationEventDispatcher : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private SpriteRenderer _spriteRenderer;
 
-    private const float changeDirectionValue = .01f;
-    private const float speedToRun = .45f;
-    private const float maxMoveAnimationSpeed = 2.5f;
-    private const float maxRunAnimationSpeed = 4f;
+    private const float ChangeDirectionValue = .01f;
+    private const float SpeedToRun = .45f;
+    private const float MaxMoveAnimationSpeed = 2.5f;
+    private const float MaxRunAnimationSpeed = 4f;
 
     public void UpdateHorizontalVelocity(float force)
     {
-        if (force < -changeDirectionValue)
+        if (force < -ChangeDirectionValue)
             _spriteRenderer.flipX = true;
-        else if (force > changeDirectionValue)
+        else if (force > ChangeDirectionValue)
             _spriteRenderer.flipX = false;
 
         float absForce = Math.Abs(force);
 
-        _animator.SetBool(IsMoving, absForce > changeDirectionValue);
-        _animator.SetBool(IsRunning, absForce > speedToRun);
+        _animator.SetBool(IsMoving, absForce > ChangeDirectionValue);
+        _animator.SetBool(IsRunning, absForce > SpeedToRun);
 
         if (_animator.GetBool(IsDamaged))
             _animator.speed = 1;
         else if (_animator.GetBool(IsRunning))
-            _animator.speed = 1 + (absForce - speedToRun) / (1 - speedToRun) * maxRunAnimationSpeed;
+            _animator.speed = 1 + (absForce - SpeedToRun) / (1 - SpeedToRun) * MaxRunAnimationSpeed;
         else
-            _animator.speed = 1 + absForce / speedToRun * maxMoveAnimationSpeed;
+            _animator.speed = 1 + absForce / SpeedToRun * MaxMoveAnimationSpeed;
     }
 
     public void UpdateGrounded(bool grounded) => _animator.SetBool(OnGround, grounded);

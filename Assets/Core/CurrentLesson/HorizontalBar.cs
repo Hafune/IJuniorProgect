@@ -6,21 +6,22 @@ using UnityEngine;
 [RequireComponent(typeof(RectTransform))]
 public class HorizontalBar : MonoBehaviour
 {
-    private float _maxWidth;
     [SerializeField] [Min(0)] private float _changeDelay = 0f;
     [SerializeField] [Min(0.0001f)] private float _changeSpeed = 1f;
     [SerializeField] [Range(0f, 1f)] private float _currentPercent = 1f;
 
-    [CanBeNull] private Coroutine _enumerator;
+    [CanBeNull] private Coroutine _animatePositionEnumerator;
     
+    private float _maxWidth;
+
     public void SetPercent(float percent)
     {
         _currentPercent = Mathf.Clamp(percent, 0f, 1f);
 
-        if (_enumerator != null)
-            StopCoroutine(_enumerator);
+        if (_animatePositionEnumerator != null)
+            StopCoroutine(_animatePositionEnumerator);
 
-        _enumerator = StartCoroutine(AnimatePosition());
+        _animatePositionEnumerator = StartCoroutine(AnimatePosition());
     }
 
     private void Start()

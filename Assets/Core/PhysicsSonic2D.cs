@@ -21,9 +21,9 @@ public class PhysicsSonic2D : MonoBehaviour
     private const float _groundOffset = .01f;
     private const float _maxNextNormalAngle = 50f;
     private const float _accelerationTime = .0005f;
-    private const float _groundFriction = 0.06f;
-    private const float _airFriction = _groundFriction * .05f;
-    private bool _grounded;
+    private const float _groundFriction = .06f;
+    private const float _airFriction = .003f;
+    private bool _isGrounded;
     private bool _lastGrounded;
     private Rigidbody2D _rigidbody = null!;
     private CircleCollider2D _circleCollider = null!;
@@ -77,7 +77,7 @@ public class PhysicsSonic2D : MonoBehaviour
     private void FixedUpdate()
     {
         var gravity = _groundNormal * (Physics2D.gravity.y * Time.deltaTime);
-        float friction = _velocity.x.Sign() * (_grounded ? _groundFriction : _airFriction);
+        float friction = _velocity.x.Sign() * (_isGrounded ? _groundFriction : _airFriction);
         float speed = Math.Abs(_velocity.x);
 
         _velocity.x += _targetVelocity.x * _moveScale * (_accelerationTime / Time.deltaTime) - gravity.x;
@@ -95,7 +95,7 @@ public class PhysicsSonic2D : MonoBehaviour
 
         _velocity.y += gravity.y;
 
-        if (_grounded && _targetVelocity.y > 0)
+        if (_isGrounded && _targetVelocity.y > 0)
             _velocity.y += _targetVelocity.y * _jumpScale;
 
         _velocity.x = Math.Clamp(_velocity.x, -_totalMaxHorizontalSpeed, _totalMaxHorizontalSpeed);
@@ -106,7 +106,7 @@ public class PhysicsSonic2D : MonoBehaviour
         var deltaPosition = _velocity * Time.deltaTime;
         float deltaDistance = deltaPosition.magnitude + _groundOffset;
 
-        if (_grounded && deltaPosition.y - _groundOffset < 0)
+        if (_isGrounded && deltaPosition.y - _groundOffset < 0)
             CheckGroundNormal(-deltaDistance +
                               deltaDistance * Math.Min(_groundNormal.y, 0) * (1 - _stickySpeed));
         else
@@ -119,7 +119,7 @@ public class PhysicsSonic2D : MonoBehaviour
         ChangeBodyVelocity(move);
 
         _dispatchHorizontalForce.Invoke(_velocity.x / _totalMaxHorizontalSpeed);
-        _dispatchGrounded.Invoke(_grounded);
+        _dispatchGrounded.Invoke(_isGrounded);
 
         _rigidbody.SetRotation(Vector2.SignedAngle(Vector2.up, _groundNormal));
     }
@@ -206,8 +206,8 @@ public class PhysicsSonic2D : MonoBehaviour
 
     private void UpdateGroundNormal(Vector2 normal, float distance, int layer)
     {
-        _lastGrounded = _grounded;
-        _grounded = false;
+        _lastGrounded = _isGrounded;
+        _isGrounded = false;
 
         if (normal == Vector2.zero)
         {
@@ -222,7 +222,7 @@ public class PhysicsSonic2D : MonoBehaviour
             return;
 
         _groundNormal = normal;
-        _grounded = true;
+        _isGrounded = true;
 
         if (!_lastGrounded)
             _velocity = _velocity.ReflectedAlong(_groundNormal);
